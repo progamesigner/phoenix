@@ -30,5 +30,6 @@
   --phoenix-urlbar-identity-label-width: 12ch;
   --phoenix-urlbar-input-padding: .5em;
   --phoenix-urlbar-input-width: 120px;
+  --phoenix-window-dragging-area-height: 4px;
   --phoenix-window-dragging-area-width: 8px;
 }

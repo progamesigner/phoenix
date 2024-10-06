@@ -7,6 +7,10 @@
   --toolbarbutton-inner-padding: 8px !important;
 }
 
+#tabbrowser-tabs {
+  margin-top: var(--phoenix-window-dragging-area-height);
+}
+
 .titlebar-spacer {
   display: none;
 }

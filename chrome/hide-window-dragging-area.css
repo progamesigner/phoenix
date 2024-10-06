@@ -1,3 +1,7 @@
+:root {
+  --phoenix-window-dragging-area-height: 0 !important;
+}
+
 @media (-moz-platform: windows) {
   #titlebar {
     .titlebar-buttonbox-container {
