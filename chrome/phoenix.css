@@ -10,6 +10,7 @@
 @import url(phoenix-responsiveness.css);
 
 @import url(hide-all-tabs-button.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-all-tabs-button"));
+@import url(hide-leftmost-menu-button.css) (not (-moz-bool-pref: "phoenix.urlbar.hide-leftmost-menu-button"));
 @import url(hide-navigation-buttons.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigation-buttons"));
 @import url(hide-navigator-border.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigator-border"));
 @import url(hide-only-single-tab.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-tabs"));
