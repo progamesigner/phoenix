@@ -1,0 +1,25 @@
+#PersonalToolbar {
+  --bookmarks-toolbar-overlapping-browser-height: calc(var(--phoenix-bookmark-item-icon-size) + 4 * var(--phoenix-bookmark-item-block-padding) + 2 * var(--phoenix-bookmark-toolbar-block-padding)) !important;
+
+  padding: var(--phoenix-bookmark-toolbar-block-padding) var(--phoenix-bookmark-toolbar-inline-padding) !important;
+
+  #personal-toolbar-empty-description,
+  toolbarbutton.bookmark-item:not(.subviewbutton) {
+    margin: var(--phoenix-bookmark-item-block-margin) var(--phoenix-bookmark-item-inline-margin) !important;
+    padding: var(--phoenix-bookmark-item-block-padding) var(--phoenix-bookmark-item-inline-padding) !important;
+  }
+
+  #PlacesChevron {
+    margin-block: calc(var(--phoenix-bookmark-toolbar-block-padding) + var(--phoenix-bookmark-item-block-padding)) !important;
+  }
+
+  toolbarseparator {
+    margin-block: calc(var(--phoenix-bookmark-toolbar-block-padding) + var(--phoenix-bookmark-item-block-padding)) !important;
+  }
+
+  .toolbarbutton-icon {
+    width: calc(var(--phoenix-bookmark-icon-size) + 2 * var(--phoenix-bookmark-icon-padding)) !important;
+    height: calc(var(--phoenix-bookmark-icon-size) + 2 * var(--phoenix-bookmark-icon-padding)) !important;
+    padding: var(--phoenix-bookmark-icon-padding);
+  }
+}
