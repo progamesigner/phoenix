@@ -53,62 +53,60 @@
     :is(#urlbar, #urlbar-container) {
       min-width: unset;
     }
+  }
 
-    #titlebar {
-      #tabbrowser-tabs {
-        pointer-events: none;
+  #titlebar {
+    #tabbrowser-tabs {
+      pointer-events: none;
 
-        .tabbrowser-tab {
-          --tab-selected-bgimage: transparent !important;
-          --toolbar-bgcolor: transparent !important;
+      .tabbrowser-tab {
+        --tab-selected-bgimage: transparent !important;
+        --toolbar-bgcolor: transparent !important;
 
-          -moz-box-flex: unset !important;
-          margin-inline-end: auto !important;
-          max-width: unset !important;
-          width: max-content !important;
+        -moz-box-flex: unset !important;
+        margin-inline-end: auto !important;
+        max-width: unset !important;
+        width: max-content !important;
 
-          &:not([visuallyselected]) {
-            display: none;
-          }
-
-          .tab-text {
-            font-weight: 600;
-          }
-
-          .tab-close-button {
-            display: none;
-          }
-
-          .tab-background {
-            opacity: 0;
-          }
+        &:not([visuallyselected]) {
+          display: none;
         }
-      }
-    }
 
-    #nav-bar {
-      margin-top: calc(-1 * var(--phoenix-window-bar-height));
-      z-index: 5;
-    }
+        .tab-text {
+          font-weight: 600;
+        }
 
-    #alltabs-button,
-    #tabbrowser-arrowscrollbox {
-      & > :not(.tabbrowser-tab) {
-        display: none !important;
+        .tab-close-button {
+          display: none;
+        }
+
+        .tab-background {
+          opacity: 0;
+        }
       }
     }
   }
 
-  #urlbar-container {
-    #urlbar {
-      &[pageproxystate="valid"] {
-        &:not([breakout-extend]) {
-          #identity-icon-label,
-          #userContext-label {
-            display: none;
-          }
+  #nav-bar {
+    margin-top: calc(-1 * var(--phoenix-window-bar-height));
+    z-index: 5;
+  }
+
+  #urlbar {
+    &[pageproxystate="valid"] {
+      &:not([breakout-extend]) {
+        #identity-icon-label,
+        #userContext-label {
+          display: none;
         }
       }
+    }
+  }
+
+  #alltabs-button,
+  #tabbrowser-arrowscrollbox {
+    & > :not(.tabbrowser-tab) {
+      display: none !important;
     }
   }
 }
