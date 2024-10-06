@@ -11,11 +11,11 @@
 
 @import url(hide-all-tabs-button.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-all-tabs-button"));
 @import url(hide-navigation-buttons.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigation-buttons"));
-@import url(hide-navigator-border.css) (not (-moz-bool-pref: "phoenix.urlbar.always-show-navigator-border"));
+@import url(hide-navigator-border.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigator-border"));
 @import url(hide-only-single-tab.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-tabs"));
 @import url(hide-unified-extensions-button.css) (-moz-bool-pref: "phoenix.navbar.hide-unified-extensions-button");
 @import url(hide-urlbar-icons.css) (not (-moz-bool-pref: "phoenix.urlbar.always-show-icons"));
-@import url(hide-window-dragging-area.css) (-moz-bool-pref: "phoenix.urlbar.hide-window-dragging-area");
+@import url(hide-window-dragging-area.css) (-moz-bool-pref: "phoenix.navbar.hide-window-dragging-area");
 
 @import url(use-centered-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-centered-urlbar");
 @import url(use-conditional-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-conditional-navigation-buttons");
