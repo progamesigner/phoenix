@@ -1,0 +1,7 @@
+@media (-moz-platform: windows) {
+  #titlebar {
+    .titlebar-buttonbox-container {
+      margin-left: 0;
+    }
+  }
+}

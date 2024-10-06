@@ -1,0 +1,9 @@
+#urlbar-container {
+  position: relative !important;
+}
+
+#urlbar {
+  &[breakout-extend] {
+    inset-inline: 0 !important;
+  }
+}

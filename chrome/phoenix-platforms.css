@@ -1,0 +1,83 @@
+:root {
+  --phoenix-navbar-button-width: calc(16px + 2 * (var(--toolbarbutton-inner-padding) + var(--toolbarbutton-outer-padding)));
+  --phoenix-window-bar-height: calc(var(--tab-min-height) + var(--inline-tab-padding));
+  --phoenix-window-control-margin: 0;
+}
+
+/* macOS */
+@media (-moz-platform: macos) {
+  :root {
+    --phoenix-window-control-margin: 66px;
+  }
+
+  .titlebar-buttonbox-container {
+    height: var(--phoenix-window-bar-height);
+    left: 0;
+    position: absolute;
+  }
+
+  @media ((not (max-width: 700px))) {
+    #nav-bar {
+      margin-left: calc(var(--phoenix-window-control-margin) + 2px);
+    }
+
+    #titlebar {
+      margin-right: 4px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    #nav-bar {
+      margin-inline: 4px;
+    }
+
+    #titlebar {
+      margin-left: calc(var(--phoenix-window-control-margin) + 2px);
+      margin-right: 4px;
+    }
+  }
+}
+
+/* Windows */
+@media (-moz-platform: windows) {
+  :root {
+    --phoenix-window-control-margin: 102px;
+  }
+
+  #toolbar-menubar {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &:not([inactive]) {
+      height: var(--phoenix-window-bar-height) !important;
+    }
+  }
+
+  #titlebar {
+    &:has(#toolbar-menubar:not([inactive])) {
+      #TabsToolbar,
+      & + #nav-bar {
+        margin-top: calc(var(--tab-min-height) / 2);
+      }
+    }
+
+    .titlebar-buttonbox-container {
+      margin-left: var(--phoenix-window-dragging-area-width);
+    }
+  }
+
+  #nav-bar {
+    &:not(:has(toolbaritem:first-child)),
+    &:not(:has(toolbarpaletteitem:first-child > toolbaritem)) {
+      margin-left: 2px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    #PanelUI-button {
+      margin-right: 4px;
+    }
+  }
+}

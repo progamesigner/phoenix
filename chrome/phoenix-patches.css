@@ -1,0 +1,39 @@
+/* Fix customizing panel position */
+#customization-palette-container {
+  min-width: var(--phoenix-urlbar-collapsed-width);
+  overflow-x: hidden;
+}
+
+#customization-panel-container {
+  --phoenix-customization-invisible-nav-button-count: 0;
+
+  .panel-arrow {
+    --phoenix-customization-panel-arrow-offset: calc(var(--panel-arrow-offset) - var(--customization-panel-padding) - 10px);
+
+    margin-inline-end: calc(var(--phoenix-customization-panel-arrow-offset) - var(--phoenix-customization-invisible-nav-button-count) * var(--phoenix-navbar-button-width)) !important;
+  }
+
+  .panel-arrowcontent {
+    margin-inline: calc(-1 * var(--customization-panel-padding)) auto !important;
+  }
+}
+
+@media (not (-moz-bool-pref: "phoenix.navbar.always-show-navigation-buttons")) {
+  #navigator-toolbox {
+    &:has(#wrapper-urlbar-container ~ #wrapper-back-button) {
+      & ~ #customization-container {
+        #customization-panel-container {
+          --phoenix-customization-invisible-nav-button-count: 1;
+        }
+      }
+    }
+
+    &:has(#wrapper-urlbar-container ~ #wrapper-back-button ~ #wrapper-forward-button) {
+      & ~ #customization-container {
+        #customization-panel-container {
+          --phoenix-customization-invisible-nav-button-count: 2;
+        }
+      }
+    }
+  }
+}

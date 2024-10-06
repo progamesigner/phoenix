@@ -1,0 +1,16 @@
+#titlebar {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+#TabsToolbar {
+  --toolbarbutton-inner-padding: 8px !important;
+}
+
+.titlebar-spacer {
+  display: none;
+}
+
+.tab-background {
+  transition: background-color var(--phoenix-transition-speed);
+}

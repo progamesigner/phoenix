@@ -1,0 +1,31 @@
+#titlebar {
+  #tabbrowser-tabs {
+    .tabbrowser-tab {
+      &:only-of-type {
+        --tab-selected-bgimage: transparent !important;
+        --toolbar-bgcolor: transparent !important;
+
+        -moz-box-flex: unset !important;
+        margin-inline-end: auto !important;
+        max-width: unset !important;
+        width: max-content !important;
+      }
+    }
+  }
+}
+
+.tabbrowser-tab {
+  &:only-of-type {
+    .tab-text {
+      font-weight: 600;
+    }
+
+    .tab-close-button {
+      display: none;
+    }
+
+    .tab-background {
+      opacity: 0;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+:root {
+  --phoenix-single-tab-width: 700px;
+}
+
+#navigator-toolbox {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#titlebar {
+  order: 2;
+}
+
+#nav-bar {
+  order: 1;
+
+  & ~ * {
+    flex-basis: 100vw;
+    order: 3;
+  }
+}
+
+@media (max-width: 700px) {
+  #nav-bar {
+    --phoenix-urlbar-expanded-inset: 16px;
+  }
+
+  #navigator-toolbox {
+    & > * {
+      order: unset;
+      min-width: 100vw !important;
+    }
+  }
+
+  #urlbar-container {
+    min-width: unset !important;
+  }
+}

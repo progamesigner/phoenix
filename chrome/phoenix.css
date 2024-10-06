@@ -1,0 +1,33 @@
+@import url(phoenix-nav-bar.css);
+@import url(phoenix-tabs-bar.css);
+@import url(phoenix-tool-bar.css);
+
+@import url(phoenix-buttons.css);
+
+@import url(phoenix-patches.css);
+@import url(phoenix-platforms.css);
+@import url(phoenix-responsiveness.css);
+
+@import url(hide-all-tabs-button.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-all-tabs-button"));
+@import url(hide-navigation-buttons.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigation-buttons"));
+@import url(hide-only-single-tab.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-tabs"));
+@import url(hide-unified-extensions-button.css) (-moz-bool-pref: "phoenix.navbar.hide-unified-extensions-button");
+@import url(hide-urlbar-icons.css) (not (-moz-bool-pref: "phoenix.urlbar.always-show-icons"));
+@import url(hide-window-dragging-area.css) (-moz-bool-pref: "phoenix.urlbar.hide-window-dragging-area");
+
+@import url(use-centered-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-centered-urlbar");
+@import url(use-conditional-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-conditional-navigation-buttons");
+@import url(use-dynamic-urlbar-icons.css) (-moz-bool-pref: "phoenix.urlbar.use-dynamic-urlbar-icons");
+@import url(use-proton-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-proton-urlbar");
+@import url(use-transparent-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-transparent-urlbar");
+
+:root {
+  --phoenix-transition-delay: .15s;
+  --phoenix-transition-quick-speed: .05s;
+  --phoenix-transition-speed: .25s;
+  --phoenix-urlbar-collapsed-width: 360px;
+  --phoenix-urlbar-expanded-inset: 20vw;
+  --phoenix-urlbar-input-padding: .5em;
+  --phoenix-urlbar-input-width: 120px;
+  --phoenix-window-dragging-area-width: 8px;
+}

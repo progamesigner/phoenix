@@ -1,0 +1,43 @@
+#urlbar-container {
+  &:hover {
+    #urlbar {
+      &[pageproxystate="valid"] {
+        &:not([breakout-extend]) {
+          :where(#identity-icon-label, #tracking-protection-icon-container, #userContext-icons, .urlbar-page-action, .verifiedDomain) {
+            transition: opacity var(--phoenix-transition-speed) var(--phoenix-transition-delay);
+          }
+        }
+      }
+    }
+  }
+
+  &:not(:hover) {
+    #urlbar {
+      &[pageproxystate="valid"] {
+        &:not([breakout-extend]) {
+          :where(#identity-icon-label, #tracking-protection-icon-container, #userContext-icons, .urlbar-page-action:not(.urlbar-addon-page-action), .verifiedDomain) {
+            opacity: 0;
+            transition: opacity var(--phoenix-transition-quick-speed);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media not (-moz-bool-pref: "phoenix.navs.always-show-urlbar-icons.always-show-addon-icons") {
+  #urlbar-container {
+    &:not(:hover) {
+      #urlbar {
+        &[pageproxystate="valid"] {
+          &:not([breakout-extend]) {
+            :where(.urlbar-page-action.urlbar-addon-page-action) {
+              opacity: 0;
+              transition: opacity var(--phoenix-transition-quick-speed);
+            }
+          }
+        }
+      }
+    }
+  }
+}

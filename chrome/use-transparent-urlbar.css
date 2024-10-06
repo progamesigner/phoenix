@@ -1,0 +1,14 @@
+#nav-bar {
+  --toolbar-field-background-color: transparent;
+}
+
+#urlbar {
+  &:hover {
+    --toolbar-field-background-color: var(--toolbar-bgcolor);
+  }
+}
+
+#urlbar-background {
+  --toolbar-field-border-color: transparent !important;
+  --toolbar-field-focus-border-color: transparent !important;
+}

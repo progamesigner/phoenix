@@ -1,0 +1,25 @@
+#urlbar-container {
+  & ~ #back-button,
+  & ~ #back-button ~ #forward-button {
+    display: none;
+  }
+}
+
+/* In the customize menu, showing instructions */
+:is(#wrapper-back-button, #wrapper-forward-button) {
+  opacity: 1 !important;
+}
+
+#wrapper-urlbar-container {
+  & ~ :is(#wrapper-back-button, #wrapper-forward-button) {
+    opacity: .5 !important;
+  }
+}
+
+#customization-header {
+  &::after {
+    content: "To hide the back & forward buttons, drag them to the right of the URL bar";
+    display: block;
+    margin-top: .25em;
+  }
+}

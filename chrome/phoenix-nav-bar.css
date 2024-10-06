@@ -1,0 +1,59 @@
+#nav-bar {
+  --toolbar-field-background-color: var(--toolbar-bgcolor);
+  --toolbar-start-end-padding: 2px;
+  --toolbarbutton-outer-padding: 2px;
+  --urlbar-margin-inline: 2px;
+
+  background-color: transparent !important;
+  max-width: calc(100vw - var(--phoenix-window-control-margin)) !important;
+  position: static !important;
+}
+
+#searchbar,
+#urlbar {
+  &:not([focused]) {
+    &:hover {
+      --toolbar-field-border-color: var(--toolbar-field-focus-border-color);
+    }
+  }
+}
+
+#search-container {
+  transition: min-width var(--phoenix-transition-speed);
+}
+
+#urlbar-container {
+  min-width: calc(min(var(--phoenix-urlbar-collapsed-width), calc(100vw - var(--phoenix-single-tab-width))));
+  position: static !important;
+  transition: background-color var(--phoenix-transition-speed), width var(--phoenix-transition-speed), min-width var(--phoenix-transition-speed);
+  width: unset !important;
+}
+
+#urlbar {
+  &[breakout] {
+    position: relative !important;
+  }
+
+  &[breakout-extend] {
+    inset-inline: var(--phoenix-urlbar-expanded-inset) !important;
+    margin-block: auto !important;
+    position: absolute !important;
+    width: unset !important;
+
+    #urlbar-background {
+      transition: background-color var(--phoenix-transition-speed), border-color var(--phoenix-transition-speed);
+    }
+  }
+
+  &:not([breakout-extend]) {
+    #urlbar-background {
+      transition: border-color var(--phoenix-transition-speed);
+    }
+  }
+}
+
+.urlbar-input-box {
+  padding-inline: var(--phoenix-urlbar-input-padding);
+  transition: width var(--phoenix-transition-speed);
+  width: var(--phoenix-urlbar-input-width);
+}

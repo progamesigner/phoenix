@@ -1,0 +1,9 @@
+:root {
+  &:not([customizing]) {
+    :where(#back-button, #forward-button) {
+      &[disabled] {
+        display: none !important;
+      }
+    }
+  }
+}
