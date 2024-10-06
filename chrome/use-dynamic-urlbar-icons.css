@@ -7,6 +7,10 @@
             transition: font-size var(--phoenix-transition-speed), margin-inline var(--phoenix-transition-speed), max-width var(--phoenix-transition-speed), opacity var(--phoenix-transition-speed) var(--phoenix-transition-delay), padding-inline var(--phoenix-transition-speed);
             max-width: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding));
           }
+
+          #identity-icon-label {
+            max-width: var(--phoenix-urlbar-identity-label-width);
+          }
         }
       }
     }

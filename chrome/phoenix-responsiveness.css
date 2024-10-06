@@ -98,4 +98,17 @@
       }
     }
   }
+
+  #urlbar-container {
+    #urlbar {
+      &[pageproxystate="valid"] {
+        &:not([breakout-extend]) {
+          #identity-icon-label,
+          #userContext-label {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }
