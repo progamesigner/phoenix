@@ -26,13 +26,76 @@
   }
 
   #navigator-toolbox {
+    &:hover,
+    &:focus-within {
+      #tabbrowser-tabs {
+        opacity: 0;
+      }
+    }
+
+    &:not(:hover) {
+      &:not(:focus-within) {
+        #nav-bar {
+          opacity: 0;
+        }
+      }
+    }
+
     & > * {
       order: unset;
       min-width: 100vw !important;
     }
-  }
 
-  #urlbar-container {
-    min-width: unset !important;
+    :is(#TabsToolbar#nav-bar, #tabbrowser-tabs) {
+      transition: opacity var(--phoenix-transition-delay);
+    }
+
+    :is(#urlbar, #urlbar-container) {
+      min-width: unset;
+    }
+
+    #titlebar {
+      #tabbrowser-tabs {
+        pointer-events: none;
+
+        .tabbrowser-tab {
+          --tab-selected-bgimage: transparent !important;
+          --toolbar-bgcolor: transparent !important;
+
+          -moz-box-flex: unset !important;
+          margin-inline-end: auto !important;
+          max-width: unset !important;
+          width: max-content !important;
+
+          &:not([visuallyselected]) {
+            display: none;
+          }
+
+          .tab-text {
+            font-weight: 600;
+          }
+
+          .tab-close-button {
+            display: none;
+          }
+
+          .tab-background {
+            opacity: 0;
+          }
+        }
+      }
+    }
+
+    #nav-bar {
+      margin-top: calc(-1 * var(--phoenix-window-bar-height));
+      z-index: 5;
+    }
+
+    #alltabs-button,
+    #tabbrowser-arrowscrollbox {
+      & > :not(.tabbrowser-tab) {
+        display: none !important;
+      }
+    }
   }
 }

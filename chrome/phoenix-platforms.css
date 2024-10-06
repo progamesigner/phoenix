@@ -7,6 +7,7 @@
 /* macOS */
 @media (-moz-platform: macos) {
   :root {
+    --phoenix-macos-window-margin: 4px;
     --phoenix-window-control-margin: 66px;
   }
 
@@ -16,24 +17,27 @@
     position: absolute;
   }
 
+  #titlebar {
+    margin-right: var(--phoenix-macos-window-margin);
+  }
+
   @media ((not (max-width: 700px))) {
     #nav-bar {
-      margin-left: calc(var(--phoenix-window-control-margin) + 2px);
-    }
-
-    #titlebar {
-      margin-right: 4px;
+      margin-left: calc(var(--phoenix-window-control-margin) + var(--phoenix-window-dragging-area-width));
     }
   }
 
   @media (max-width: 700px) {
-    #nav-bar {
-      margin-inline: 4px;
-    }
+    #navigator-toolbox {
+      #nav-bar {
+        margin-left: calc(var(--phoenix-window-control-margin) + var(--phoenix-window-dragging-area-width));
+        min-width: calc(100vw - var(--phoenix-window-control-margin) - var(--phoenix-window-dragging-area-width) - var(--phoenix-macos-window-margin)) !important;
+      }
 
-    #titlebar {
-      margin-left: calc(var(--phoenix-window-control-margin) + 2px);
-      margin-right: 4px;
+      #titlebar {
+        margin-left: calc(var(--phoenix-window-control-margin) + var(--phoenix-window-dragging-area-width));
+        min-width: calc(100vw - var(--phoenix-window-control-margin) - var(--phoenix-window-dragging-area-width) - var(--phoenix-macos-window-margin)) !important;
+      }
     }
   }
 }
@@ -41,7 +45,7 @@
 /* Windows */
 @media (-moz-platform: windows) {
   :root {
-    --phoenix-window-control-margin: 102px;
+    --phoenix-window-control-margin: 138px;
   }
 
   #toolbar-menubar {
@@ -76,8 +80,22 @@
   }
 
   @media (max-width: 700px) {
-    #PanelUI-button {
-      margin-right: 4px;
+    #navigator-toolbox {
+      #titlebar {
+        &:has(#toolbar-menubar:not([inactive])) {
+          & + #nav-bar {
+            margin-top: calc(-1 * var(--phoenix-window-bar-height));
+          }
+        }
+      }
+
+      #nav-bar {
+        min-width: calc(100vw - var(--phoenix-window-control-margin) - var(--phoenix-window-dragging-area-width)) !important;
+      }
+
+      #PanelUI-button {
+        margin-right: 4px;
+      }
     }
   }
 }

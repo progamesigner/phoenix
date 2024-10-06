@@ -5,7 +5,7 @@
   --urlbar-margin-inline: 2px;
 
   background-color: transparent !important;
-  max-width: calc(100vw - var(--phoenix-window-control-margin)) !important;
+  max-width: calc(100vw - var(--phoenix-window-control-margin) - var(--phoenix-window-dragging-area-width));
   position: static !important;
 }
 
