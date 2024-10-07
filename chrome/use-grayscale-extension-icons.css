@@ -1,0 +1,17 @@
+#navigator-toolbox {
+  .toolbarbutton-icon {
+    transition: filter var(--phoenix-transition-speed);
+  }
+
+  &:hover {
+    .toolbarbutton-icon {
+      filter: grayscale(0%);
+    }
+  }
+
+  &:not(:hover) {
+    .toolbarbutton-icon {
+      filter: grayscale(100%);
+    }
+  }
+}

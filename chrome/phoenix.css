@@ -21,6 +21,7 @@
 @import url(use-centered-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-centered-urlbar");
 @import url(use-conditional-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-conditional-navigation-buttons");
 @import url(use-dynamic-urlbar-icons.css) (-moz-bool-pref: "phoenix.urlbar.use-dynamic-urlbar-icons");
+@import url(use-grayscale-extension-icons.css) (-moz-bool-pref: "phoenix.navbar.use-grayscale-extension-icons");
 @import url(use-proton-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-proton-urlbar");
 @import url(use-transparent-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-transparent-urlbar");
 
