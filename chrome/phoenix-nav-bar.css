@@ -1,5 +1,5 @@
 #nav-bar {
-  --toolbar-field-background-color: var(--toolbar-bgcolor);
+  --toolbar-field-background-color: var(--toolbar-field-focus-background-color);
   --toolbar-start-end-padding: 2px;
   --toolbarbutton-outer-padding: 2px;
   --urlbar-margin-inline: 2px;
