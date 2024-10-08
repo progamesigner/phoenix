@@ -7,7 +7,7 @@
   --toolbarbutton-inner-padding: 8px !important;
 }
 
-#tabbrowser-tabs {
+#TabsToolbar-customization-target {
   margin-top: var(--phoenix-window-dragging-area-height);
 }
 
