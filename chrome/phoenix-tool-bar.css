@@ -1,8 +1,0 @@
-.toolbaritem-combined-buttons {
-  margin-inline-end: var(--toolbarbutton-outer-padding) !important;
-}
-
-#nav-bar-overflow-button,
-#PanelUI-button {
-  margin-block: calc(2 * var(--toolbarbutton-outer-padding)) !important;
-}

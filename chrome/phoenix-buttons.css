@@ -1,3 +1,12 @@
+#nav-bar-overflow-button,
+#PanelUI-button {
+  margin-block: calc(2 * var(--toolbarbutton-outer-padding)) !important;
+}
+
+.toolbaritem-combined-buttons {
+  margin-inline-end: var(--toolbarbutton-outer-padding) !important;
+}
+
 .toolbarbutton-icon {
   transition: background-color var(--phoenix-transition-speed);
 }
