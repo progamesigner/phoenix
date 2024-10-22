@@ -1,4 +1,5 @@
 @import url(phoenix-bookmarks-bar.css);
+@import url(phoenix-find-bar.css);
 @import url(phoenix-nav-bar.css);
 @import url(phoenix-status-bar.css);
 @import url(phoenix-tabs-bar.css);
@@ -37,6 +38,7 @@
   --phoenix-bookmark-item-inline-padding: 4px;
   --phoenix-bookmark-toolbar-block-padding: 2px;
   --phoenix-bookmark-toolbar-inline-padding: 2px;
+  --phoenix-findbar-block-padding: 8px;
   --phoenix-statusbar-border-radius: 4px;
   --phoenix-statusbar-padding-inline: 8px;
   --phoenix-transition-delay: .15s;

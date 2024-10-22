@@ -1,0 +1,18 @@
+.findbar-container{
+  height: calc(28px + var(--phoenix-findbar-block-padding) * 2) !important;
+}
+
+.findbar-textbox {
+  transition: border-color var(--phoenix-transition-speed), outline-color var(--phoenix-transition-speed);
+
+  outline-color: transparent !important;
+  padding-block: var(--phoenix-findbar-block-padding) !important;
+
+  &:focus {
+    outline-color: var(--toolbar-field-focus-border-color) !important;
+  }
+
+  &:not(:focus) {
+    --input-border-color: transparent;
+  }
+}
