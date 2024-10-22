@@ -1,0 +1,16 @@
+#userContext-icons {
+  &::before{
+    border-top-left-radius: var(--toolbarbutton-border-radius);
+    border-top-right-radius: var(--toolbarbutton-border-radius);
+    border-top: var(--phoenix-urlbar-container-color-bar-height) solid var(--identity-icon-color);
+    content: "";
+    display: block;
+    height: 0;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+}
