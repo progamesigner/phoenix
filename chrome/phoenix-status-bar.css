@@ -1,0 +1,13 @@
+#statuspanel {
+  &:not([hidden]) {
+    border-radius: var(--phoenix-statusbar-border-radius);
+    bottom: 1vh !important;
+    left: 1vw !important;
+    max-width: 98vw !important;
+  }
+}
+
+#statuspanel-label {
+  border-radius: var(--phoenix-statusbar-border-radius);
+  padding-inline: var(--phoenix-statusbar-padding-inline) !important;
+}
