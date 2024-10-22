@@ -1,0 +1,5 @@
+#navigator-toolbox {
+  &:-moz-window-inactive {
+    filter: contrast(90%);
+  }
+}

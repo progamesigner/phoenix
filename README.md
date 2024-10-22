@@ -71,6 +71,7 @@ cp userChrome.example.css userChrome.css
 #### Enable Extra & Alternative Stylings
 - `phoenix.navbar.use-alternative-navigation-buttons`
 - `phoenix.navbar.use-conditional-navigation-buttons`
+- `phoenix.navbar.use-fade-window-on-inactive`
 - `phoenix.navbar.use-grayscale-extension-icons`
 - `phoenix.navbar.use-menu-as-private-mode-indicator`
 - `phoenix.urlbar.use-centered-urlbar`
