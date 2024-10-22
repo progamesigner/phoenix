@@ -1,9 +1,15 @@
 #statuspanel {
   &:not([hidden]) {
     border-radius: var(--phoenix-statusbar-border-radius);
-    bottom: 1vh !important;
-    left: 1vw !important;
-    max-width: 98vw !important;
+    bottom: 0.5vh !important;
+    left: 0.5vw !important;
+    max-width: 99vw !important;
+  }
+
+  &:not([mirror]):-moz-locale-dir(rtl),
+  &[mirror]:-moz-locale-dir(ltr) {
+    left: auto !important;
+    right: 0.5vw !important;
   }
 }
 
