@@ -59,19 +59,20 @@ cp userChrome.example.css userChrome.css
 ## Options
 
 #### Disable Default Stylings
-- `phoenix.tabbar.always-show-all-tabs-button`
-- `phoenix.urlbar.hide-leftmost-menu-button`
 - `phoenix.navbar.always-show-navigation-buttons`
 - `phoenix.navbar.always-show-navigator-border`
-- `phoenix.tabbar.always-show-tabs`
 - `phoenix.navbar.hide-unified-extensions-button`
-- `phoenix.urlbar.always-show-icons`
 - `phoenix.navbar.hide-window-dragging-area`
+- `phoenix.tabbar.always-show-all-tabs-button`
+- `phoenix.tabbar.always-show-tabs`
+- `phoenix.urlbar.always-show-icons`
+- `phoenix.urlbar.hide-leftmost-menu-button`
 
 #### Enable Extra & Alternative Stylings
 - `phoenix.navbar.use-alternative-navigation-buttons`
 - `phoenix.navbar.use-conditional-navigation-buttons`
 - `phoenix.navbar.use-grayscale-extension-icons`
+- `phoenix.navbar.use-menu-as-private-mode-indicator`
 - `phoenix.urlbar.use-centered-urlbar`
 - `phoenix.urlbar.use-dynamic-urlbar-icons`
 - `phoenix.urlbar.use-proton-urlbar`
