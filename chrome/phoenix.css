@@ -24,6 +24,7 @@
 @import url(use-alternative-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-alternative-navigation-buttons");
 @import url(use-centered-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-centered-urlbar");
 @import url(use-conditional-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-conditional-navigation-buttons");
+@import url(use-connection-type-color-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-connection-type-color-urlbar");
 @import url(use-container-color-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-container-color-urlbar");
 @import url(use-dynamic-urlbar-icons.css) (-moz-bool-pref: "phoenix.urlbar.use-dynamic-urlbar-icons");
 @import url(use-fade-window-on-inactive.css) (-moz-bool-pref: "phoenix.navbar.use-fade-window-on-inactive");

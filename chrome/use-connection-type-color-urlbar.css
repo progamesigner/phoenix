@@ -1,0 +1,79 @@
+:root {
+  --phoenix-urlbar-background-color-cert-error-page: color-mix(in srgb, var(--icon-color-critical) 30%, transparent);
+  --phoenix-urlbar-background-color-chrome-ui: color-mix(in srgb, var(--icon-color-success) 30%, transparent);
+  --phoenix-urlbar-background-color-extension-page: rgba(150, 50, 250, 0.2);
+  --phoenix-urlbar-background-color-local-resource: color-mix(in srgb, var(--icon-color-information) 30%, transparent);
+  --phoenix-urlbar-background-color-not-secure: color-mix(in srgb, var(--icon-color-critical) 30%, transparent);
+  --phoenix-urlbar-background-color-unknown-identity: color-mix(in srgb, var(--icon-color-warning) 30%, transparent);
+
+  &[customizing],
+  #urlbar[focused] {
+    #identity-box {
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  #urlbar {
+    &:hover {
+      #identity-box {
+        &::before {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+#identity-box {
+  &::before{
+    border-radius: var(--toolbarbutton-border-radius);
+    content: "";
+    display: block;
+    height: var(--urlbar-height);
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    opacity: 1;
+    transition: opacity var(--phoenix-transition-speed);
+    width: 100%;
+  }
+
+  &.certErrorPage {
+    &::before {
+      background-color: var(--phoenix-urlbar-background-color-cert-error-page);
+    }
+  }
+
+  &.chromeUI {
+    &::before {
+      background-color: var(--phoenix-urlbar-background-color-chrome-ui);
+    }
+  }
+
+  &.extensionPage {
+    &::before {
+      background-color: var(--phoenix-urlbar-background-color-extension-page);
+    }
+  }
+
+  &.localResource {
+    &::before {
+      background-color: var(--phoenix-urlbar-background-color-local-resource);
+    }
+  }
+
+  &.notSecure {
+    &::before {
+      background-color: var(--phoenix-urlbar-background-color-not-secure);
+    }
+  }
+
+  &.unknownIdentity {
+    &::before {
+      background-color: var(--phoenix-urlbar-background-color-unknown-identity);
+    }
+  }
+}

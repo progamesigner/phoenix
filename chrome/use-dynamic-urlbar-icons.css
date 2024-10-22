@@ -3,13 +3,13 @@
     #urlbar {
       &[pageproxystate="valid"] {
         &:not([breakout-extend]) {
-          :where(#identity-icon-label, #tracking-protection-icon-container, #userContext-label, .urlbar-page-action, .verifiedDomain) {
+          :where(#identity-box.chromeUI #identity-icon-label, #identity-box:not(.chromeUI) > .identity-box-button, #tracking-protection-icon-container, #userContext-label, .urlbar-page-action) {
             transition: font-size var(--phoenix-transition-speed), margin-inline var(--phoenix-transition-speed), max-width var(--phoenix-transition-speed), opacity var(--phoenix-transition-speed) var(--phoenix-transition-delay), padding-inline var(--phoenix-transition-speed);
-            max-width: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding));
+            max-width: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding)) !important;
           }
 
-          :where(#identity-icon-label, .verifiedDomain) {
-            max-width: var(--phoenix-urlbar-label-width);
+          :where(#identity-box.chromeUI #identity-icon-label, #identity-box:not(.chromeUI) > .identity-box-button) {
+            max-width: var(--phoenix-urlbar-label-width) !important;
           }
         }
       }
@@ -24,13 +24,19 @@
             opacity: 1;
           }
 
-          :where(#identity-icon-label, #tracking-protection-icon-container, #userContext-label, .urlbar-page-action:not(.urlbar-addon-page-action), .verifiedDomain) {
+          :where(#identity-box.chromeUI #identity-icon-label, #identity-box:not(.chromeUI) > .identity-box-button, #tracking-protection-icon-container, #userContext-label, .urlbar-page-action:not(.urlbar-addon-page-action)) {
             font-size: 0;
             margin-inline: 0 !important;
-            max-width: 0;
+            max-width: 0 !important;
             opacity: 0;
             padding-inline: 0 !important;
             transition: font-size var(--phoenix-transition-speed), margin-inline var(--phoenix-transition-speed), max-width var(--phoenix-transition-speed), opacity var(--phoenix-transition-quick-speed), padding-inline var(--phoenix-transition-speed);
+          }
+
+          #identity-box {
+            &:not(.chromeUI) {
+              margin-inline: 0 !important;
+            }
           }
         }
       }

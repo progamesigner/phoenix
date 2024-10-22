@@ -3,7 +3,7 @@
     #urlbar {
       &[pageproxystate="valid"] {
         &:not([breakout-extend]) {
-          :where(#tracking-protection-icon-container, #userContext-icons, .urlbar-page-action, .verifiedDomain) {
+          :where(#identity-box:not(.chromeUI) > .identity-box-button, #tracking-protection-icon-container, #userContext-icons, .urlbar-page-action) {
             transition: opacity var(--phoenix-transition-speed) var(--phoenix-transition-delay);
           }
         }
@@ -15,7 +15,7 @@
     #urlbar {
       &[pageproxystate="valid"] {
         &:not([breakout-extend]) {
-          :where(#tracking-protection-icon-container, #userContext-icons, .urlbar-page-action:not(.urlbar-addon-page-action), .verifiedDomain) {
+          :where(#identity-box:not(.chromeUI) > .identity-box-button, #tracking-protection-icon-container, #userContext-icons, .urlbar-page-action:not(.urlbar-addon-page-action)) {
             opacity: 0;
             transition: opacity var(--phoenix-transition-quick-speed);
           }
