@@ -76,6 +76,7 @@ cp userChrome.example.css userChrome.css
 - `phoenix.navbar.use-menu-as-private-mode-indicator`
 - `phoenix.urlbar.use-centered-urlbar`
 - `phoenix.urlbar.use-connection-type-color-urlbar`
+- `phoenix.urlbar.use-container-color-urlbar`
 - `phoenix.urlbar.use-dynamic-urlbar-icons`
 - `phoenix.urlbar.use-proton-urlbar`
 - `phoenix.urlbar.use-transparent-urlbar`
