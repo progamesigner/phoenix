@@ -1,0 +1,13 @@
+#nav-bar {
+  #back-button {
+    .toolbarbutton-icon {
+      list-style-image: url("chrome://global/skin/icons/arrow-left.svg") !important;
+    }
+  }
+
+  #forward-button {
+    .toolbarbutton-icon {
+      list-style-image: url("chrome://global/skin/icons/arrow-right.svg") !important;
+    }
+  }
+}

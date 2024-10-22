@@ -19,6 +19,7 @@
 @import url(hide-urlbar-icons.css) (not (-moz-bool-pref: "phoenix.urlbar.always-show-icons"));
 @import url(hide-window-dragging-area.css) (-moz-bool-pref: "phoenix.navbar.hide-window-dragging-area");
 
+@import url(use-alternative-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-alternative-navigation-buttons");
 @import url(use-centered-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-centered-urlbar");
 @import url(use-conditional-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-conditional-navigation-buttons");
 @import url(use-dynamic-urlbar-icons.css) (-moz-bool-pref: "phoenix.urlbar.use-dynamic-urlbar-icons");

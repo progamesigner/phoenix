@@ -69,10 +69,11 @@ cp userChrome.example.css userChrome.css
 - `phoenix.navbar.hide-window-dragging-area`
 
 #### Enable Extra & Alternative Stylings
-- `phoenix.urlbar.use-centered-urlbar`
+- `phoenix.navbar.use-alternative-navigation-buttons`
 - `phoenix.navbar.use-conditional-navigation-buttons`
-- `phoenix.urlbar.use-dynamic-urlbar-icons`
 - `phoenix.navbar.use-grayscale-extension-icons`
+- `phoenix.urlbar.use-centered-urlbar`
+- `phoenix.urlbar.use-dynamic-urlbar-icons`
 - `phoenix.urlbar.use-proton-urlbar`
 - `phoenix.urlbar.use-transparent-urlbar`
 
