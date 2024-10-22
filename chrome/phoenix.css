@@ -40,9 +40,9 @@
   --phoenix-transition-speed: .25s;
   --phoenix-urlbar-collapsed-width: 360px;
   --phoenix-urlbar-expanded-inset: 20vw;
-  --phoenix-urlbar-identity-label-width: 12ch;
   --phoenix-urlbar-input-padding: .5em;
   --phoenix-urlbar-input-width: 120px;
+  --phoenix-urlbar-label-width: 12ch;
   --phoenix-window-dragging-area-height: 4px;
   --phoenix-window-dragging-area-width: 8px;
 }

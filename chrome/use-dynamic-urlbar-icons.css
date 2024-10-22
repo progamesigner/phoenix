@@ -8,8 +8,8 @@
             max-width: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding));
           }
 
-          #identity-icon-label {
-            max-width: var(--phoenix-urlbar-identity-label-width);
+          :where(#identity-icon-label, .verifiedDomain) {
+            max-width: var(--phoenix-urlbar-label-width);
           }
         }
       }
