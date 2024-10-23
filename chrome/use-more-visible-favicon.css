@@ -1,0 +1,11 @@
+/*
+ * This source file is licensed under the Mozilla Public License 2.0.
+ * https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/more_visible_tab_icon.css
+ *
+ * For details, see the above repository for updates as well as full license text.
+ */
+
+/* Makes black favicons more visible on dark background, contrast will be lowered though */
+.tab-icon-image {
+  filter: invert(40%) contrast(250%) saturate(250%) !important;
+}

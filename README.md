@@ -74,6 +74,7 @@ cp userChrome.example.css userChrome.css
 - `phoenix.navbar.use-fade-window-on-inactive`
 - `phoenix.navbar.use-grayscale-extension-icons`
 - `phoenix.navbar.use-menu-as-private-mode-indicator`
+- `phoenix.tabbar.use-more-visible-favicon`
 - `phoenix.urlbar.use-centered-urlbar`
 - `phoenix.urlbar.use-connection-type-color-urlbar`
 - `phoenix.urlbar.use-container-color-urlbar`

@@ -30,6 +30,7 @@
 @import url(use-fade-window-on-inactive.css) (-moz-bool-pref: "phoenix.navbar.use-fade-window-on-inactive");
 @import url(use-grayscale-extension-icons.css) (-moz-bool-pref: "phoenix.navbar.use-grayscale-extension-icons");
 @import url(use-menu-as-private-mode-indicator.css) (-moz-bool-pref: "phoenix.navbar.use-menu-as-private-mode-indicator");
+@import url(use-more-visible-favicon.css) (-moz-bool-pref: "phoenix.tabbar.use-more-visible-favicon");
 @import url(use-proton-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-proton-urlbar");
 @import url(use-transparent-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-transparent-urlbar");
 
