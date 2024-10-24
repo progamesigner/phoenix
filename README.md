@@ -28,6 +28,12 @@ A simplified single bar theme for Firefox.
 
 ## Installation
 
+### Enable `userChrome.css`
+
+1. Go to [`about:config`](about:config) page.
+2. Click "Accept the Risk and Continue" and search `toolkit.legacyUserProfileCustomizations.stylesheets`.
+3. Change the value to `true`.
+
 ### Find Firefox Profile Folder
 
 1. Go to [`about:support`](about:support) page.
