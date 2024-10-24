@@ -75,6 +75,7 @@ cp userChrome.example.css userChrome.css
 - `phoenix.urlbar.hide-leftmost-menu-button`
 
 #### Enable Extra & Alternative Stylings
+- `phoenix.browser.use-acrylic-window` (only available on macOS)
 - `phoenix.navbar.use-alternative-navigation-buttons`
 - `phoenix.navbar.use-conditional-navigation-buttons`
 - `phoenix.navbar.use-fade-window-on-inactive`
