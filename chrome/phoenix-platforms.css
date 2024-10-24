@@ -9,6 +9,12 @@
   :root {
     --phoenix-macos-window-margin: 4px;
     --phoenix-window-control-margin: 66px;
+
+    &[tabsintitlebar] {
+      &[inFullscreen] {
+        --phoenix-window-control-margin: 0;
+      }
+    }
   }
 
   .titlebar-buttonbox-container {
