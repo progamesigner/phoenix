@@ -1,0 +1,69 @@
+/*
+ * This source file is licensed under the Mozilla Public License 2.0.
+ * https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/round_ui_items.css
+ *
+ * For details, see the above repository for updates as well as full license text.
+ */
+
+:root {
+  --tab-border-radius: 18px !important;
+  --toolbarbutton-border-radius: 24px !important;
+}
+
+.close-icon > image,
+.panel-arrowcontent,
+.search-one-offs button,
+.subviewbutton-back,
+.tab-close-button,
+.titlebar-button:hover,
+.toolbaritem-combined-buttons > toolbarbutton,
+.urlbar-input-container > box:is(:hover, [open]),
+.urlbarView-row-inner,
+#main-menubar > menu,
+#page-action-buttons > :hover,
+#PopupSearchAutoComplete,
+#scrollbutton-down,
+#scrollbutton-up,
+menupopup {
+  border-radius: 18px;
+}
+
+button,
+.tab-background {
+  border-radius: 30px !important;
+}
+
+.panel-arrowcontent {
+  margin-inline-end: 0 !important;
+}
+
+.panel-arrow {
+  margin-inline: 17px !important;
+}
+
+menupopup {
+  appearance: none !important;
+  overflow: -moz-hidden-unscrollable !important;
+}
+
+.tabbrowser-tab {
+  &:is([selected], [beforeselected-visible]) {
+    &::after{
+      border-color: transparent !important;
+    }
+  }
+}
+
+.urlbar-icon,
+toolbar toolbarbutton:not(#back-button):not(.bookmark-item):not(.titlebar-button) > .toolbarbutton-icon {
+  border-radius: 0px !important;
+  clip-path: circle();
+}
+
+menugroup {
+  &:hover {
+    & > menuitem {
+      clip-path: circle();
+    }
+  }
+}

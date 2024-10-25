@@ -76,6 +76,7 @@ cp userChrome.example.css userChrome.css
 
 #### Enable Extra & Alternative Stylings
 - `phoenix.browser.use-acrylic-window` (only available on macOS)
+- `phoenix.browser.use-rounded-ui`
 - `phoenix.navbar.use-alternative-navigation-buttons`
 - `phoenix.navbar.use-conditional-navigation-buttons`
 - `phoenix.navbar.use-fade-window-on-inactive`

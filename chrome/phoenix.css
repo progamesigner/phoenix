@@ -33,6 +33,7 @@
 @import url(use-menu-as-private-mode-indicator.css) (-moz-bool-pref: "phoenix.navbar.use-menu-as-private-mode-indicator");
 @import url(use-more-visible-favicon.css) (-moz-bool-pref: "phoenix.tabbar.use-more-visible-favicon");
 @import url(use-proton-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-proton-urlbar");
+@import url(use-rounded-ui.css) (-moz-bool-pref: "phoenix.browser.use-rounded-ui");
 @import url(use-tab-loading-indicator.css) (-moz-bool-pref: "phoenix.tabbar.use-tab-loading-indicator");
 @import url(use-tab-loading-progress-bar.css) (-moz-bool-pref: "phoenix.tabbar.use-tab-loading-progress-bar");
 @import url(use-transparent-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-transparent-urlbar");
