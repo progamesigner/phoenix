@@ -1,0 +1,33 @@
+/*
+ * This source file is licensed under the Mozilla Public License 2.0.
+ * https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/overlay_fullscreen_toolbars.css
+ *
+ * For details, see the above repository for updates as well as full license text.
+ */
+
+@media (-moz-bool-pref: "browser.fullscreen.autohide"){
+  :root {
+    &[sizemode="fullscreen"] {
+      #navigator-toolbox {
+        position: fixed !important;
+        transition: margin-top 100ms ease-in-out 600ms;
+        width: 100vw;
+        z-index: 1;
+
+        &[style=""],
+        &:hover,
+        &:focus-within {
+          margin-top: 0 !important;
+          transition-delay: 0ms;
+        }
+      }
+    }
+  }
+
+  #mainPopupSet:has(> #appMenu-popup[panelopen="true"]) {
+    & ~ #navigator-toolbox {
+      transition-delay: 0ms;
+      margin-top: 0 !important;
+    }
+  }
+}

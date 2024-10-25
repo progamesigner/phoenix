@@ -65,6 +65,7 @@ cp userChrome.example.css userChrome.css
 ## Options
 
 #### Disable Default Stylings
+- `phoenix.browser.always-show-fullscreen-toolbars`
 - `phoenix.navbar.always-show-navigation-buttons`
 - `phoenix.navbar.always-show-navigator-border`
 - `phoenix.navbar.hide-unified-extensions-button`
