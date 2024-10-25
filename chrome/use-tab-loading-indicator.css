@@ -1,0 +1,43 @@
+/*
+ * This source file is licensed under the Mozilla Public License 2.0.
+ * https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/tab_line_loading_indicator.css
+ *
+ * For details, see the above repository for updates as well as full license text.
+ */
+
+@keyframes tab-loading-indicator-animation {
+  from {
+    background-position-x: left;
+  }
+  to {
+    background-position-x: right;
+  }
+}
+
+.tab-background[selected],
+.tabbrowser-tab[busy] > .tab-stack >  .tab-background {
+  &::before {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: "";
+    display: flex;
+    height: 2px;
+    transition: background-size 80ms linear;
+  }
+}
+
+.tabbrowser-tab {
+  &[busy] {
+    & > .tab-stack {
+      & > .tab-background {
+        &::before {
+          animation: tab-loading-indicator-animation 400ms alternate infinite ease-in-out;
+          background-image: linear-gradient(currentColor, currentColor);
+          background-size: 10%;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+}

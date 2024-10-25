@@ -1,0 +1,75 @@
+/*
+ * This source file is licensed under the Mozilla Public License 2.0.
+ * https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/tab_loading_progress_bar.css
+ *
+ * For details, see the above repository for updates as well as full license text.
+ */
+
+@keyframes tab-loading-progress-bar-animation {
+  from {
+    background-size: 0%;
+  }
+  to {
+    background-size: 20%;
+  }
+}
+
+.tab-background {
+  &::after{
+    background-size: 90%;
+  }
+}
+
+.tabbrowser-tab {
+  &:is([bursting], [busy]) {
+    & > .tab-stack {
+      & > .tab-background {
+        &::after{
+          background-color: transparent;
+          background-image: linear-gradient(currentColor, currentColor);
+          background-repeat: no-repeat;
+          content: "";
+          display: flex;
+          height: 2px;
+          transition: background-size 80ms ease-out;
+        }
+      }
+    }
+  }
+
+  &[busy] {
+    &:not([bursting], [progress]) {
+      & > .tab-stack {
+        & > .tab-background {
+          &::after {
+            animation: tab-loading-progress-bar-animation 80ms ease;
+            background-size: 20%;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+
+    &[bursting] {
+      & > .tab-stack {
+        & > .tab-background {
+          &::after {
+            background-size: 100%;
+            opacity: 0;
+            transition: background-size 80ms ease-out, opacity 80ms linear;
+          }
+        }
+      }
+    }
+
+    &[progress] {
+      & > .tab-stack {
+        & > .tab-background {
+          &::after {
+            transition-duration: 2000ms;
+          }
+        }
+      }
+    }
+  }
+}

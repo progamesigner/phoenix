@@ -82,6 +82,8 @@ cp userChrome.example.css userChrome.css
 - `phoenix.navbar.use-grayscale-extension-icons`
 - `phoenix.navbar.use-menu-as-private-mode-indicator`
 - `phoenix.tabbar.use-more-visible-favicon`
+- `phoenix.tabbar.use-tab-loading-indicator`
+- `phoenix.tabbar.use-tab-loading-progress-bar`
 - `phoenix.urlbar.use-centered-urlbar`
 - `phoenix.urlbar.use-connection-type-color-urlbar`
 - `phoenix.urlbar.use-container-color-urlbar`
