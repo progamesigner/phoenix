@@ -23,7 +23,7 @@
     position: absolute;
   }
 
-  #titlebar {
+  #TabsToolbar {
     margin-right: var(--phoenix-macos-window-margin);
   }
 
@@ -40,7 +40,7 @@
         min-width: calc(100vw - var(--phoenix-window-control-margin) - var(--phoenix-window-dragging-area-width) - var(--phoenix-macos-window-margin)) !important;
       }
 
-      #titlebar {
+      #TabsToolbar {
         margin-left: calc(var(--phoenix-window-control-margin) + var(--phoenix-window-dragging-area-width));
         min-width: calc(100vw - var(--phoenix-window-control-margin) - var(--phoenix-window-dragging-area-width) - var(--phoenix-macos-window-margin)) !important;
       }
@@ -65,7 +65,7 @@
     }
   }
 
-  #titlebar {
+  #TabsToolbar {
     &:has(#toolbar-menubar:not([inactive])) {
       #TabsToolbar,
       & + #nav-bar {
@@ -87,7 +87,7 @@
 
   @media (max-width: 700px) {
     #navigator-toolbox {
-      #titlebar {
+      #TabsToolbar {
         &:has(#toolbar-menubar:not([inactive])) {
           & + #nav-bar {
             margin-top: calc(-1 * var(--phoenix-window-bar-height));

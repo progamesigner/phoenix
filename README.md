@@ -95,4 +95,4 @@ cp userChrome.example.css userChrome.css
 
 ## Compatibility
 
-Currently tested on Windows & macOS with Firefox 131+
+Currently tested on Windows & macOS with Firefox 133+

@@ -3,7 +3,7 @@
 }
 
 @media (-moz-platform: windows) {
-  #titlebar {
+  #TabsToolbar {
     .titlebar-buttonbox-container {
       margin-left: 0;
     }

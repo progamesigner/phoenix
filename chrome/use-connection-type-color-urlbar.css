@@ -27,7 +27,7 @@
 }
 
 #identity-box {
-  &::before{
+  &::before {
     border-radius: var(--toolbarbutton-border-radius);
     content: "";
     display: block;

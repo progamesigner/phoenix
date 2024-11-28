@@ -1,10 +1,8 @@
-#titlebar {
-  flex-basis: 0;
-  flex-grow: 1;
-}
-
 #TabsToolbar {
   --toolbarbutton-inner-padding: 8px !important;
+
+  flex-basis: 0;
+  flex-grow: 1;
 }
 
 #TabsToolbar-customization-target {

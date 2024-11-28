@@ -1,4 +1,4 @@
-#titlebar {
+#TabsToolbar {
   #tabbrowser-tabs {
     .tabbrowser-tab {
       &:only-of-type {
