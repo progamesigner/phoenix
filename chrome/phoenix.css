@@ -12,7 +12,6 @@
 @import url(phoenix-platforms.css);
 @import url(phoenix-responsiveness.css);
 
-@import url(hide-all-tabs-button.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-all-tabs-button")), (not (-moz-pref("phoenix.tabbar.always-show-all-tabs-button")));
 @import url(hide-fullscreen-toolbars.css) (not (-moz-bool-pref: "phoenix.browser.always-show-fullscreen-toolbars")), (not (-moz-pref("phoenix.browser.always-show-fullscreen-toolbars")));
 @import url(hide-leftmost-menu-button.css) (not (-moz-bool-pref: "phoenix.urlbar.hide-leftmost-menu-button")), (not (-moz-pref("phoenix.urlbar.hide-leftmost-menu-button")));
 @import url(hide-navigation-buttons.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigation-buttons")), (not (-moz-pref("phoenix.navbar.always-show-navigation-buttons")));
