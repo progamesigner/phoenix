@@ -13,7 +13,7 @@
           &[popover] {
             pointer-events: none;
             opacity: 0;
-            transition: transform 100ms ease-in-out 600ms, opacity 0ms 700ms;
+            transition: transform var(--phoenix-transition-delay) ease-in-out var(--phoenix-transition-speed), opacity 0ms calc(var(--phoenix-transition-delay) + var(--phoenix-transition-speed));
             transform: translateY(calc(0px - var(--tab-min-height) - (var(--tab-block-margin) * 2) - var(--urlbar-container-height)));
           }
         }
@@ -23,7 +23,7 @@
         margin-top: 0 !important;
         position: fixed !important;
         transform: translateY(-100%);
-        transition: transform 100ms ease-in-out 600ms !important;
+        transition: transform var(--phoenix-transition-delay) ease-in-out var(--phoenix-transition-speed) !important;
         width: 100vw;
         z-index: 10 !important;
       }
