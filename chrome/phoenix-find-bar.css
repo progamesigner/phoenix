@@ -3,8 +3,8 @@
 }
 
 .findbar-closebutton {
-  margin-block: 6px;
-  padding-inline: 16px;
+  margin-block: 6px !important;
+  padding-inline: 16px !important;
 }
 
 .findbar-textbox {
