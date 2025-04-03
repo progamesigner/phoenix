@@ -1,5 +1,10 @@
-.findbar-container{
+.findbar-container {
   height: calc(28px + var(--phoenix-findbar-block-padding) * 2) !important;
+}
+
+.findbar-closebutton {
+  margin-block: 6px;
+  padding-inline: 16px;
 }
 
 .findbar-textbox {
