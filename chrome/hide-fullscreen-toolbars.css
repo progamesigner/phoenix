@@ -7,27 +7,41 @@
 
 @media (-moz-bool-pref: "browser.fullscreen.autohide"), (-moz-pref("browser.fullscreen.autohide")) {
   :root {
-    &[sizemode="fullscreen"] {
-      #navigator-toolbox {
-        position: fixed !important;
-        transition: margin-top 100ms ease-in-out 600ms;
-        width: 100vw;
-        z-index: 1;
-
-        &[style=""],
-        &:hover,
-        &:focus-within {
-          margin-top: 0 !important;
-          transition-delay: 0ms;
+    &[inFullscreen] {
+      &[sessionrestored] {
+        #urlbar {
+          &[popover] {
+            pointer-events: none;
+            opacity: 0;
+            transition: transform 100ms ease-in-out 600ms, opacity 0ms 700ms;
+            transform: translateY(calc(0px - var(--tab-min-height) - (var(--tab-block-margin) * 2) - var(--urlbar-container-height)));
+          }
         }
       }
-    }
-  }
 
-  #mainPopupSet:has(> #appMenu-popup[panelopen="true"]) {
-    & ~ #navigator-toolbox {
-      transition-delay: 0ms;
-      margin-top: 0 !important;
+      #navigator-toolbox {
+        margin-top: 0 !important;
+        position: fixed !important;
+        transform: translateY(-100%);
+        transition: transform 100ms ease-in-out 600ms !important;
+        width: 100vw;
+        z-index: 10 !important;
+      }
+
+      #navigator-toolbox:is(:hover, :focus-within, [style=""]),
+      #mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts, #selection-shortcut-action-panel, #chat-shortcuts-options-panel, #tab-preview-panel)) ~ #navigator-toolbox {
+        transform: translateY(0);
+        transition-delay: 0ms !important;
+      }
+
+      #mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts, #selection-shortcut-action-panel, #chat-shortcuts-options-panel, #tab-preview-panel)) ~ toolbox #urlbar[popover],
+      #navigator-toolbox:is(:hover, :focus-within, [style=""]) #urlbar[popover],
+      #urlbar-container > #urlbar[popover]:is([focused], [open]) {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+        transition-delay: 0ms;
+      }
     }
   }
 }
