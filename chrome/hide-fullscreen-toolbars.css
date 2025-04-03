@@ -5,7 +5,7 @@
  * For details, see the above repository for updates as well as full license text.
  */
 
-@media (-moz-bool-pref: "browser.fullscreen.autohide"){
+@media (-moz-bool-pref: "browser.fullscreen.autohide"), (-moz-pref("browser.fullscreen.autohide")) {
   :root {
     &[sizemode="fullscreen"] {
       #navigator-toolbox {

@@ -18,7 +18,7 @@
   }
 }
 
-@media (not (-moz-bool-pref: "phoenix.navbar.always-show-navigation-buttons")) {
+@media not (-moz-bool-pref: "phoenix.navbar.always-show-navigation-buttons"), not (-moz-pref("phoenix.navbar.always-show-navigation-buttons")) {
   #navigator-toolbox {
     &:has(#wrapper-urlbar-container ~ #wrapper-back-button) {
       & ~ #customization-container {

@@ -25,7 +25,7 @@
   }
 }
 
-@media not (-moz-bool-pref: "phoenix.navs.always-show-urlbar-icons.always-show-addon-icons") {
+@media not (-moz-bool-pref: "phoenix.navs.always-show-urlbar-icons.always-show-addon-icons"), not (-moz-pref("phoenix.navs.always-show-urlbar-icons.always-show-addon-icons")) {
   #urlbar-container {
     &:not(:hover) {
       #urlbar {

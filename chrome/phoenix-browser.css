@@ -1,4 +1,4 @@
-@media (-moz-bool-pref: "sidebar.revamp") {
+@media (-moz-bool-pref: "sidebar.revamp"), (-moz-pref("sidebar.revamp")) {
   #tabbrowser-tabbox {
     box-shadow: none !important;
   }

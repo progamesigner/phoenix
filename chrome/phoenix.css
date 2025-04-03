@@ -12,32 +12,32 @@
 @import url(phoenix-platforms.css);
 @import url(phoenix-responsiveness.css);
 
-@import url(hide-all-tabs-button.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-all-tabs-button"));
-@import url(hide-fullscreen-toolbars.css) (not (-moz-bool-pref: "phoenix.browser.always-show-fullscreen-toolbars"));
-@import url(hide-leftmost-menu-button.css) (not (-moz-bool-pref: "phoenix.urlbar.hide-leftmost-menu-button"));
-@import url(hide-navigation-buttons.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigation-buttons"));
-@import url(hide-navigator-border.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigator-border"));
-@import url(hide-only-single-tab.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-tabs"));
-@import url(hide-unified-extensions-button.css) (-moz-bool-pref: "phoenix.navbar.hide-unified-extensions-button");
-@import url(hide-urlbar-icons.css) (not (-moz-bool-pref: "phoenix.urlbar.always-show-icons"));
-@import url(hide-window-dragging-area.css) (-moz-bool-pref: "phoenix.navbar.hide-window-dragging-area");
+@import url(hide-all-tabs-button.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-all-tabs-button")), (not (-moz-pref("phoenix.tabbar.always-show-all-tabs-button")));
+@import url(hide-fullscreen-toolbars.css) (not (-moz-bool-pref: "phoenix.browser.always-show-fullscreen-toolbars")), (not (-moz-pref("phoenix.browser.always-show-fullscreen-toolbars")));
+@import url(hide-leftmost-menu-button.css) (not (-moz-bool-pref: "phoenix.urlbar.hide-leftmost-menu-button")), (not (-moz-pref("phoenix.urlbar.hide-leftmost-menu-button")));
+@import url(hide-navigation-buttons.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigation-buttons")), (not (-moz-pref("phoenix.navbar.always-show-navigation-buttons")));
+@import url(hide-navigator-border.css) (not (-moz-bool-pref: "phoenix.navbar.always-show-navigator-border")), (not (-moz-pref("phoenix.navbar.always-show-navigator-border")));
+@import url(hide-only-single-tab.css) (not (-moz-bool-pref: "phoenix.tabbar.always-show-tabs")), (not (-moz-pref("phoenix.tabbar.always-show-tabs")));
+@import url(hide-unified-extensions-button.css) (-moz-bool-pref: "phoenix.navbar.hide-unified-extensions-button"), (-moz-pref("phoenix.navbar.hide-unified-extensions-button"));
+@import url(hide-urlbar-icons.css) (not (-moz-bool-pref: "phoenix.urlbar.always-show-icons")), (not (-moz-pref("phoenix.urlbar.always-show-icons")));
+@import url(hide-window-dragging-area.css) (-moz-bool-pref: "phoenix.navbar.hide-window-dragging-area"), (-moz-pref("phoenix.navbar.hide-window-dragging-area"));
 
-@import url(use-acrylic-window.css) (-moz-bool-pref: "phoenix.browser.use-acrylic-window");
-@import url(use-alternative-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-alternative-navigation-buttons");
-@import url(use-centered-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-centered-urlbar");
-@import url(use-conditional-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-conditional-navigation-buttons");
-@import url(use-connection-type-color-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-connection-type-color-urlbar");
-@import url(use-container-color-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-container-color-urlbar");
-@import url(use-dynamic-urlbar-icons.css) (-moz-bool-pref: "phoenix.urlbar.use-dynamic-urlbar-icons");
-@import url(use-fade-window-on-inactive.css) (-moz-bool-pref: "phoenix.navbar.use-fade-window-on-inactive");
-@import url(use-grayscale-extension-icons.css) (-moz-bool-pref: "phoenix.navbar.use-grayscale-extension-icons");
-@import url(use-menu-as-private-mode-indicator.css) (-moz-bool-pref: "phoenix.navbar.use-menu-as-private-mode-indicator");
-@import url(use-more-visible-favicon.css) (-moz-bool-pref: "phoenix.tabbar.use-more-visible-favicon");
-@import url(use-proton-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-proton-urlbar");
-@import url(use-rounded-ui.css) (-moz-bool-pref: "phoenix.browser.use-rounded-ui");
-@import url(use-tab-loading-indicator.css) (-moz-bool-pref: "phoenix.tabbar.use-tab-loading-indicator");
-@import url(use-tab-loading-progress-bar.css) (-moz-bool-pref: "phoenix.tabbar.use-tab-loading-progress-bar");
-@import url(use-transparent-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-transparent-urlbar");
+@import url(use-acrylic-window.css) (-moz-bool-pref: "phoenix.browser.use-acrylic-window"), (-moz-pref("phoenix.browser.use-acrylic-window"));
+@import url(use-alternative-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-alternative-navigation-buttons"), (-moz-pref("phoenix.navbar.use-alternative-navigation-buttons"));
+@import url(use-centered-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-centered-urlbar"), (-moz-pref("phoenix.urlbar.use-centered-urlbar"));
+@import url(use-conditional-navigation-buttons.css) (-moz-bool-pref: "phoenix.navbar.use-conditional-navigation-buttons"), (-moz-pref("phoenix.navbar.use-conditional-navigation-buttons"));
+@import url(use-connection-type-color-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-connection-type-color-urlbar"), (-moz-pref("phoenix.urlbar.use-connection-type-color-urlbar"));
+@import url(use-container-color-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-container-color-urlbar"), (-moz-pref("phoenix.urlbar.use-container-color-urlbar"));
+@import url(use-dynamic-urlbar-icons.css) (-moz-bool-pref: "phoenix.urlbar.use-dynamic-urlbar-icons"), (-moz-pref("phoenix.urlbar.use-dynamic-urlbar-icons"));
+@import url(use-fade-window-on-inactive.css) (-moz-bool-pref: "phoenix.navbar.use-fade-window-on-inactive"), (-moz-pref("phoenix.navbar.use-fade-window-on-inactive"));
+@import url(use-grayscale-extension-icons.css) (-moz-bool-pref: "phoenix.navbar.use-grayscale-extension-icons"), (-moz-pref("phoenix.navbar.use-grayscale-extension-icons"));
+@import url(use-menu-as-private-mode-indicator.css) (-moz-bool-pref: "phoenix.navbar.use-menu-as-private-mode-indicator"), (-moz-pref("phoenix.navbar.use-menu-as-private-mode-indicator"));
+@import url(use-more-visible-favicon.css) (-moz-bool-pref: "phoenix.tabbar.use-more-visible-favicon"), (-moz-pref("phoenix.tabbar.use-more-visible-favicon"));
+@import url(use-proton-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-proton-urlbar"), (-moz-pref("phoenix.urlbar.use-proton-urlbar"));
+@import url(use-rounded-ui.css) (-moz-bool-pref: "phoenix.browser.use-rounded-ui"), (-moz-pref("phoenix.browser.use-rounded-ui"));
+@import url(use-tab-loading-indicator.css) (-moz-bool-pref: "phoenix.tabbar.use-tab-loading-indicator"), (not (-moz-pref("phoenix.tabbar.use-tab-loading-indicator")));
+@import url(use-tab-loading-progress-bar.css) (-moz-bool-pref: "phoenix.tabbar.use-tab-loading-progress-bar"), (-moz-pref("phoenix.tabbar.use-tab-loading-progress-bar"));
+@import url(use-transparent-urlbar.css) (-moz-bool-pref: "phoenix.urlbar.use-transparent-urlbar"), (-moz-pref("phoenix.urlbar.use-transparent-urlbar"));
 
 :root {
   --phoenix-bookmark-icon-padding: 2px;
