@@ -1,5 +1,5 @@
 #navigator-toolbox {
   &:-moz-window-inactive {
-    filter: contrast(90%);
+    filter: contrast(90%) brightness(75%);
   }
 }
