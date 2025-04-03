@@ -5,7 +5,7 @@
   &:not([tabsintitlebar]),
   &[inFullscreen],
   &[sizemode="maximized"] {
-    --phoenix-window-dragging-area-height: 0 !important;
+    --phoenix-window-dragging-area-height: 0px !important;
   }
 }
 
@@ -29,6 +29,28 @@
 
 .titlebar-buttonbox-container {
   margin-bottom: var(--phoenix-window-dragging-area-height) !important;
+}
+
+@media (-moz-pref("sidebar.verticalTabs")) {
+  :root {
+    --phoenix-tabbar-on-vertical-margin-bottom: var(--phoenix-window-dragging-area-height);
+  }
+
+  #navigator-toolbox {
+    --phoenix-window-dragging-area-height: 0px;
+  }
+
+  #TabsToolbar {
+    flex-grow: 0;
+  }
+
+  #nav-bar {
+    flex-grow: 1;
+  }
+
+  #TabsToolbar-customization-target {
+    margin-bottom: var(--phoenix-tabbar-on-vertical-margin-bottom);
+  }
 }
 
 @media (max-width: 700px) {
@@ -109,6 +131,36 @@
   #tabbrowser-arrowscrollbox {
     & > :not(.tabbrowser-tab) {
       display: none !important;
+    }
+  }
+
+  @media not (-moz-pref("sidebar.verticalTabs")) {
+    #navigator-toolbox {
+      &:hover,
+      &:focus-within {
+        #tabbrowser-tabs {
+          opacity: 0;
+        }
+      }
+
+      &:not(:hover) {
+        &:not(:focus-within) {
+          #nav-bar {
+            opacity: 0;
+          }
+
+          #urlbar-container {
+            #urlbar,
+            .urlbar-input-container {
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
+
+    #nav-bar {
+      margin-top: calc(-1 * var(--phoenix-window-bar-height));
     }
   }
 }

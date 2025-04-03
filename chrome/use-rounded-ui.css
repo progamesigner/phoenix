@@ -56,7 +56,7 @@ menupopup {
 
 .urlbar-icon,
 toolbar toolbarbutton:not(#back-button):not(.bookmark-item):not(.titlebar-button) > .toolbarbutton-icon {
-  border-radius: 0px !important;
+  border-radius: 0 !important;
   clip-path: circle();
 }
 

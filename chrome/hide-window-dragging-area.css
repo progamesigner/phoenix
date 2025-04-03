@@ -1,5 +1,5 @@
 :root {
-  --phoenix-window-dragging-area-height: 0 !important;
+  --phoenix-window-dragging-area-height: 0px !important;
 }
 
 @media (-moz-platform: windows) {
