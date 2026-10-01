@@ -96,3 +96,31 @@ cp userChrome.example.css userChrome.css
 ## Compatibility
 
 Currently tested on Windows & macOS with Firefox 137+
+
+## Development
+
+### UI Smoke Tests
+
+`tests/ui` loads the theme into a pinned Firefox (Linux x86_64) and checks the URL bar and tab strip widths at 699, 701, 1000 and 1001px, plus that the menu opens after hovering the collapsed toolbar at narrow widths.
+
+```sh
+pip install -r tests/ui/requirements.txt
+tests/ui/run.sh
+```
+
+`run.sh` downloads Firefox and geckodriver into `.cache/` on first run and uses `xvfb-run` when no display is available. Set `FIREFOX_BINARY` / `GECKODRIVER` to use your own builds.
+
+On failure, full-window screenshots and `geckodriver.log` are written to `.artifacts/ui/` (override with `UI_ARTIFACTS_DIR`).
+
+### CSS Lint
+
+```sh
+npm ci
+npm run lint:css
+```
+
+Runs stylelint plus `scripts/check-css.mjs`, which checks that every `var(--phoenix-*)` is declared, every `@import` target exists and every file under `chrome/` is imported, and that `-moz-bool-pref` / `-moz-pref()` pairs agree.
+
+### CI
+
+`.github/workflows/ci.yml` runs both on pushes to `main` and on pull requests, against the Firefox and geckodriver versions pinned in the workflow. When the UI smoke tests fail, the screenshots, `pytest.log`, `junit.xml` and `geckodriver.log` are uploaded as the `ui-smoke-failure` artifact.

@@ -1,0 +1,31 @@
+{
+  "extends": ["stylelint-config-recommended"],
+  "rules": {
+    "media-query-no-invalid": null,
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": [true, { "severity": "warning" }],
+    "property-no-deprecated": [true, { "severity": "warning" }],
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": [
+          "/^(h|v)?box$/",
+          "/^menu(bar|group|item|list|popup|separator)?$/",
+          "/^toolbar(button|item|paletteitem|separator|spring)?$/",
+          "/^tab(s|box|panels)?$/",
+          "arrowscrollbox",
+          "browser",
+          "deck",
+          "description",
+          "findbar",
+          "image",
+          "label",
+          "panel",
+          "panelview",
+          "stack",
+          "toolbox"
+        ]
+      }
+    ]
+  }
+}
