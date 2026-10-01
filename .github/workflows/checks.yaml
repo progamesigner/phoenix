@@ -23,11 +23,19 @@ jobs:
 
   ui-smoke:
     runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        # Nova is the default UI from Firefox 157; the classic UI stays reachable via
+        # browser.nova.enabled=false, so keep both covered until that pref goes away.
+        nova: [true, false]
+    name: ui-smoke (nova=${{ matrix.nova }})
     env:
       # Pinned here; tests/ui/install-firefox.sh uses the same defaults locally.
-      FIREFOX_VERSION: 156.0.1
+      FIREFOX_VERSION: 157.0
       GECKODRIVER_VERSION: 0.37.1
       UI_ARTIFACTS_DIR: ${{ github.workspace }}/.artifacts/ui
+      UI_NOVA: ${{ matrix.nova }}
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
@@ -55,6 +63,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v7
         with:
-          name: ui-smoke-failure
+          name: ui-smoke-failure-nova-${{ matrix.nova }}
           path: .artifacts/ui
           if-no-files-found: ignore

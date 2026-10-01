@@ -35,6 +35,9 @@ def driver(tmp_path_factory):
     options.set_preference("browser.aboutwelcome.enabled", False)
     options.set_preference("browser.startup.homepage_override.mstone", "ignore")
     options.set_preference("sidebar.verticalTabs", False)
+    # UI_NOVA=true/false pins the Nova UI on or off; unset keeps the browser default.
+    if (nova := os.environ.get("UI_NOVA")) is not None:
+        options.set_preference("browser.nova.enabled", nova.lower() == "true")
 
     # Chrome-context scripts need system access (geckodriver 0.36+, Firefox 138+).
     service = Service(

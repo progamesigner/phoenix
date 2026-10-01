@@ -3,7 +3,7 @@
 # Prints the install directory; binaries are <dir>/firefox/firefox and <dir>/geckodriver.
 set -euo pipefail
 
-FIREFOX_VERSION="${FIREFOX_VERSION:-156.0.1}"
+FIREFOX_VERSION="${FIREFOX_VERSION:-157.0}"
 GECKODRIVER_VERSION="${GECKODRIVER_VERSION:-0.37.1}"
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
