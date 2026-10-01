@@ -3,16 +3,16 @@
     &:not([inFullscreen]) {
       appearance: none !important;
       backdrop-filter: blur(40px);
-      background-color: color-mix(in srgb, var(--toolbox-non-lwt-bgcolor) 30%, transparent) !important;
+      background-color: color-mix(in srgb, var(--toolbox-background-color) 30%, transparent) !important;
 
       #navigator-toolbox {
-        --tab-selected-bgcolor: color-mix(in srgb, var(--toolbar-bgcolor) 50%, transparent) !important;
-        --toolbarbutton-hover-background: color-mix(in srgb, var(--button-hover-bgcolor) 50%, transparent) !important;
+        --tab-background-color-selected: color-mix(in srgb, var(--toolbar-background-color) 50%, transparent) !important;
+        --toolbarbutton-hover-background: color-mix(in srgb, var(--button-background-color-hover) 50%, transparent) !important;
 
         background-color: transparent !important;
 
         &:-moz-window-inactive {
-          background-color: color-mix(in srgb, var(--toolbox-non-lwt-bgcolor-inactive) 70%, transparent) !important;
+          background-color: color-mix(in srgb, var(--toolbox-background-color-inactive) 70%, transparent) !important;
         }
       }
     }
@@ -20,5 +20,5 @@
 }
 
 #nav-bar {
-  --toolbar-field-background-color: color-mix(in srgb, var(--toolbar-field-focus-background-color) 50%, transparent);
+  --toolbar-field-background-color: color-mix(in srgb, var(--toolbar-field-background-color-focus) 50%, transparent);
 }

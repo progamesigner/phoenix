@@ -1,7 +1,7 @@
 #nav-bar {
-  --toolbar-field-background-color: var(--toolbar-field-focus-background-color);
-  --toolbar-start-end-padding: 2px;
-  --toolbarbutton-outer-padding: 2px;
+  --toolbar-field-background-color: var(--toolbar-field-background-color-focus);
+  --toolbar-padding-inline: 2px;
+  --toolbarbutton-padding-outer: 2px;
   --urlbar-margin-inline: 2px;
 
   background-color: transparent !important;
@@ -14,7 +14,7 @@
 #urlbar {
   &:not([focused]) {
     &:hover {
-      --toolbar-field-border-color: var(--toolbar-field-focus-border-color);
+      --toolbar-field-border-color: var(--toolbar-field-border-color-focus);
     }
   }
 }

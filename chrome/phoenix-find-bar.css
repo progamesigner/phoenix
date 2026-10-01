@@ -14,7 +14,7 @@
   padding-block: var(--phoenix-findbar-block-padding) !important;
 
   &:focus {
-    outline-color: var(--toolbar-field-focus-border-color) !important;
+    outline-color: var(--toolbar-field-border-color-focus) !important;
   }
 
   &:not(:focus) {

@@ -1,5 +1,5 @@
 :root {
-  --phoenix-navbar-button-width: calc(16px + 2 * (var(--toolbarbutton-inner-padding) + var(--toolbarbutton-outer-padding)));
+  --phoenix-navbar-button-width: calc(16px + 2 * (var(--toolbarbutton-padding-inner) + var(--toolbarbutton-padding-outer)));
   --phoenix-window-bar-height: calc(var(--tab-min-height) + var(--inline-tab-padding, var(--inline-tab-padding, var(--space-medium))));
   --phoenix-window-control-margin: 0px;
 }

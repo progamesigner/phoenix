@@ -2,10 +2,8 @@
   #tabbrowser-tabs {
     .tabbrowser-tab {
       &:only-of-type {
-        --tab-selected-bgimage: transparent !important;
-        --toolbar-bgcolor: transparent !important;
+        --tab-background-color-selected: transparent !important;
 
-        -moz-box-flex: unset !important;
         margin-inline-end: auto !important;
         max-width: unset !important;
         width: max-content !important;

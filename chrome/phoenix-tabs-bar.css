@@ -1,5 +1,5 @@
 #TabsToolbar {
-  --toolbarbutton-inner-padding: 8px !important;
+  --toolbarbutton-padding-inner: 8px !important;
 
   flex-basis: 0;
   flex-grow: 1;
