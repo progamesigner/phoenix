@@ -15,6 +15,7 @@
 
 #private-browsing-indicator-with-label,
 .private-browsing-indicator-with-label,
+.private-browsing-indicator-button,
 .private-browsing-indicator {
   display: none;
 }
