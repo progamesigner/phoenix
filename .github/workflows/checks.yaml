@@ -54,6 +54,8 @@ jobs:
           dest="$(tests/ui/install-firefox.sh)"
           "$dest/firefox/firefox" --version
           "$dest/geckodriver" --version | head -n 1
+      - name: Check Firefox CSS variables
+        run: node scripts/check-firefox-vars.mjs "$(tests/ui/install-firefox.sh)/firefox"
       - name: Run UI smoke tests
         run: |
           set -o pipefail
