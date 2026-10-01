@@ -1,5 +1,5 @@
 .findbar-container {
-  height: calc(28px + var(--phoenix-findbar-block-padding) * 2) !important;
+  height: calc(var(--findbar-container-height, 28px) + var(--phoenix-findbar-block-padding) * 2) !important;
 }
 
 .findbar-closebutton {
