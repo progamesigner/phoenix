@@ -2,7 +2,7 @@
   &:hover {
     #urlbar {
       &[pageproxystate="valid"] {
-        &:not([breakout-extend]) {
+        &:not([breakout-extend], [focused]) {
           :where(#identity-box.chromeUI #identity-icon-label, #identity-box:not(.chromeUI) > .identity-box-button, #tracking-protection-icon-container, #userContext-label, .urlbar-page-action) {
             transition: font-size var(--phoenix-transition-speed), margin-inline var(--phoenix-transition-speed), max-width var(--phoenix-transition-speed), opacity var(--phoenix-transition-speed) var(--phoenix-transition-delay), padding-inline var(--phoenix-transition-speed);
             max-width: calc(var(--urlbar-height) - 2px - 2 * var(--urlbar-container-padding-block, 0px)) !important;
@@ -19,7 +19,7 @@
   &:not(:hover) {
     #urlbar {
       &[pageproxystate="valid"] {
-        &:not([breakout-extend]) {
+        &:not([breakout-extend], [focused]) {
           :where(#userContext-icons) {
             opacity: 1;
           }
@@ -49,7 +49,7 @@
     &:not(:hover) {
       #urlbar {
         &[pageproxystate="valid"] {
-          &:not([breakout-extend]) {
+          &:not([breakout-extend], [focused]) {
             :where(.urlbar-page-action.urlbar-addon-page-action) {
               font-size: 0;
               margin-inline: 0 !important;

@@ -116,7 +116,7 @@
 
   #urlbar {
     &[pageproxystate="valid"] {
-      &:not([breakout-extend]) {
+      &:not([breakout-extend], [focused]) {
         #identity-icon-label,
         #userContext-label {
           display: none;
