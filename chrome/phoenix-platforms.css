@@ -25,13 +25,13 @@
     margin-right: var(--phoenix-macos-window-margin);
   }
 
-  @media (not (max-width: 700px)) {
+  @media (not (max-width: 1000px)) {
     #nav-bar {
       margin-left: calc(var(--phoenix-macos-window-margin) + var(--phoenix-window-control-margin) + var(--phoenix-window-dragging-area-width));
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1000px) {
     #navigator-toolbox {
       #nav-bar {
         margin-left: calc(var(--phoenix-macos-window-margin) + var(--phoenix-window-control-margin) + var(--phoenix-window-dragging-area-width));
@@ -83,7 +83,7 @@
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1000px) {
     #navigator-toolbox {
       #TabsToolbar {
         &:has(#toolbar-menubar:not([inactive])) {

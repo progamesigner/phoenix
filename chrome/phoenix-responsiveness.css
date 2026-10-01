@@ -1,5 +1,5 @@
 :root {
-  --phoenix-single-tab-width: 700px;
+  --phoenix-single-tab-width: 800px;
 
   &:has(#toolbar-menubar:not([inactive])),
   &:not([tabsintitlebar]),
@@ -53,7 +53,7 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
   #nav-bar {
     --phoenix-urlbar-expanded-inset: 16px;
   }
