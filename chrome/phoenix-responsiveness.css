@@ -54,10 +54,6 @@
 }
 
 @media (max-width: 1000px) {
-  #nav-bar {
-    --phoenix-urlbar-expanded-inset: 16px;
-  }
-
   #navigator-toolbox {
     & > * {
       order: unset;
@@ -106,6 +102,8 @@
   }
 
   #nav-bar {
+    --phoenix-urlbar-expanded-inset: 16px;
+
     margin-top: calc(-1 * var(--phoenix-window-bar-height));
     z-index: 5;
 
