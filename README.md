@@ -77,7 +77,7 @@ cp userChrome.example.css userChrome.css
 
 #### Enable Extra & Alternative Stylings
 - `phoenix.browser.use-acrylic-window` (only available on macOS)
-- `phoenix.browser.use-rounded-ui`
+- `phoenix.browser.use-rounded-ui` (no effect with the Nova UI, which is already rounded)
 - `phoenix.navbar.use-alternative-navigation-buttons`
 - `phoenix.navbar.use-conditional-navigation-buttons`
 - `phoenix.navbar.use-fade-window-on-inactive`
