@@ -63,14 +63,13 @@
     }
   }
 
-  #TabsToolbar {
-    &:has(#toolbar-menubar:not([inactive])) {
-      #TabsToolbar,
-      & + #nav-bar {
-        margin-top: calc(var(--tab-min-height) / 2);
-      }
-    }
+  /* The menu bar is taken out of the flow above; while it is shown (Alt or
+     View > Toolbars) push the tab and nav bars down below it. */
+  #navigator-toolbox:has(> #toolbar-menubar:not([inactive])) {
+    padding-top: var(--phoenix-window-bar-height);
+  }
 
+  #TabsToolbar {
     .titlebar-buttonbox-container {
       margin-left: var(--phoenix-window-dragging-area-width);
     }
@@ -85,14 +84,6 @@
 
   @media (max-width: 1000px) {
     #navigator-toolbox {
-      #TabsToolbar {
-        &:has(#toolbar-menubar:not([inactive])) {
-          & + #nav-bar {
-            margin-top: calc(-1 * var(--phoenix-window-bar-height));
-          }
-        }
-      }
-
       #nav-bar {
         min-width: calc(100vw - var(--phoenix-window-control-margin) - var(--phoenix-window-dragging-area-width)) !important;
       }
