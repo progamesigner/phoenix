@@ -3,12 +3,15 @@
 }
 
 #urlbar {
+  --urlbar-background-color: transparent;
+
   &:hover {
     --toolbar-field-background-color: var(--toolbar-background-color);
+    --urlbar-background-color: var(--toolbar-background-color);
   }
 }
 
-#urlbar-background {
+:is(#urlbar-background, .urlbar-background) {
   --toolbar-field-border-color: transparent !important;
   --toolbar-field-border-color-focus: transparent !important;
 }

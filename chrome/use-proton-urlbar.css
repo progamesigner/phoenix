@@ -3,7 +3,7 @@
 }
 
 #urlbar {
-  &[breakout-extend] {
+  &:is([breakout-extend], [focused]) {
     inset-inline: 0 !important;
   }
 }

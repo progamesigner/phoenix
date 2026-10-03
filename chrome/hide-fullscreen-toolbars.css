@@ -10,7 +10,7 @@
     &[inFullscreen] {
       &[sessionrestored] {
         #urlbar {
-          &[popover] {
+          &:is([popover], [popover-open]) {
             pointer-events: none;
             opacity: 0;
             transition: transform var(--phoenix-transition-delay) ease-in-out var(--phoenix-transition-speed), opacity 0ms calc(var(--phoenix-transition-delay) + var(--phoenix-transition-speed));
@@ -35,9 +35,9 @@
         transition-delay: 0ms !important;
       }
 
-      #mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts, #selection-shortcut-action-panel, #chat-shortcuts-options-panel, #tab-preview-panel)) ~ toolbox #urlbar[popover],
-      #navigator-toolbox:is(:hover, :focus-within, [style=""]) #urlbar[popover],
-      #urlbar-container > #urlbar[popover]:is([focused], [open]) {
+      #mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts, #selection-shortcut-action-panel, #chat-shortcuts-options-panel, #tab-preview-panel)) ~ toolbox #urlbar:is([popover], [popover-open]),
+      #navigator-toolbox:is(:hover, :focus-within, [style=""]) #urlbar:is([popover], [popover-open]),
+      #urlbar-container > #urlbar:is([popover], [popover-open]):is([focused], [open]) {
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0);

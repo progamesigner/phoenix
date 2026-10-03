@@ -35,19 +35,19 @@
     position: relative !important;
   }
 
-  &[breakout-extend] {
+  &:is([breakout-extend], [focused]) {
     inset-inline: var(--phoenix-urlbar-expanded-inset) !important;
     margin-block: auto !important;
     position: absolute !important;
     width: unset !important;
 
-    #urlbar-background {
+    :is(#urlbar-background, .urlbar-background) {
       transition: background-color var(--phoenix-transition-speed), border-color var(--phoenix-transition-speed);
     }
   }
 
-  &:not([breakout-extend]) {
-    #urlbar-background {
+  &:not([breakout-extend], [focused]) {
+    :is(#urlbar-background, .urlbar-background) {
       transition: border-color var(--phoenix-transition-speed);
     }
   }

@@ -187,3 +187,19 @@ def test_narrow_menu_opens_after_hover(two_tabs, width):
             )
             == "closed"
         )
+
+
+@pytest.mark.parametrize("width", [800, 1400])
+def test_focused_urlbar_is_centered(driver, width):
+    resize(driver, width)
+    driver.execute_script(
+        'gURLBar.focus(); gURLBar.value = "example"; gURLBar.startQuery()'
+    )
+    WebDriverWait(driver, 5).until(
+        lambda d: d.execute_script("return gURLBar.hasAttribute('popover-open')")
+    )
+    urlbar = driver.execute_script(
+        "const r = gURLBar.getBoundingClientRect(); return {left: r.left, width: r.width}"
+    )
+    assert urlbar["left"] + urlbar["width"] / 2 == pytest.approx(width / 2, abs=TOLERANCE)
+    driver.execute_script("gURLBar.view.close(); gBrowser.selectedBrowser.focus()")
