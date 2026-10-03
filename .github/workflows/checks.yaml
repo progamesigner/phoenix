@@ -32,7 +32,7 @@ jobs:
     name: ui-smoke (nova=${{ matrix.nova }})
     env:
       # Pinned here; tests/ui/install-firefox.sh uses the same defaults locally.
-      FIREFOX_VERSION: 157.0
+      FIREFOX_VERSION: "157.0"
       GECKODRIVER_VERSION: 0.37.1
       UI_ARTIFACTS_DIR: ${{ github.workspace }}/.artifacts/ui
       UI_NOVA: ${{ matrix.nova }}
