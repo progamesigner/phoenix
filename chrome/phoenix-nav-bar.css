@@ -40,6 +40,8 @@
     margin-block: auto !important;
     position: absolute !important;
     width: unset !important;
+    /* Paint above the nav bar buttons that follow it. */
+    z-index: 1;
 
     :is(#urlbar-background, .urlbar-background) {
       transition: background-color var(--phoenix-transition-speed), border-color var(--phoenix-transition-speed);
