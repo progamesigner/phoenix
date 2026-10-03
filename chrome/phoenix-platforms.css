@@ -55,7 +55,7 @@
   /* While shown (Alt or View > Toolbars) the menu bar is a row of its own above
      the tab and nav bars. Firefox stretches it to the tab strip height so the
      window controls can live in it; keep it as short as the menus instead and
-     leave the window controls in the tab bar. */
+     pin the window controls to the window corner where they normally are. */
   #toolbar-menubar {
     flex-basis: 100vw;
     order: 0;
@@ -65,7 +65,10 @@
       position: static !important;
 
       & > .titlebar-buttonbox-container {
-        display: none;
+        height: var(--tabstrip-min-height);
+        position: fixed;
+        right: 0;
+        top: 0;
       }
     }
   }
@@ -75,9 +78,11 @@
       margin-left: var(--phoenix-window-dragging-area-width);
     }
 
+    /* Keep the tab bar's own (hidden) window controls taking up their space so
+       the pinned ones above do not cover the end of the tab bar. */
     #toolbar-menubar:not([inactive]) ~ & > .titlebar-buttonbox-container {
       display: flex !important;
-      visibility: visible !important;
+      visibility: hidden !important;
     }
   }
 
