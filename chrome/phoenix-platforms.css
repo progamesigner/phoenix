@@ -52,26 +52,31 @@
     --phoenix-window-control-margin: 138px;
   }
 
+  /* While shown (Alt or View > Toolbars) the menu bar is a row of its own above
+     the tab and nav bars. Firefox stretches it to the tab strip height so the
+     window controls can live in it; keep it as short as the menus instead and
+     leave the window controls in the tab bar. */
   #toolbar-menubar {
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-
     &:not([inactive]) {
-      height: var(--phoenix-window-bar-height) !important;
-    }
-  }
+      flex-basis: 100vw;
+      min-height: 0 !important;
+      order: 0;
+      position: static !important;
 
-  /* The menu bar is taken out of the flow above; while it is shown (Alt or
-     View > Toolbars) push the tab and nav bars down below it. */
-  #navigator-toolbox:has(> #toolbar-menubar:not([inactive])) {
-    padding-top: var(--phoenix-window-bar-height);
+      & > .titlebar-buttonbox-container {
+        display: none;
+      }
+    }
   }
 
   #TabsToolbar {
     .titlebar-buttonbox-container {
       margin-left: var(--phoenix-window-dragging-area-width);
+    }
+
+    #toolbar-menubar:not([inactive]) ~ & > .titlebar-buttonbox-container {
+      display: flex !important;
+      visibility: visible !important;
     }
   }
 
