@@ -112,6 +112,12 @@
     }
   }
 
+  @media (-moz-pref("sidebar.verticalTabs")) {
+    #nav-bar {
+      margin-top: 0;
+    }
+  }
+
   #urlbar {
     &[pageproxystate="valid"] {
       &:not([breakout-extend], [focused]) {
