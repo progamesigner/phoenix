@@ -20,6 +20,7 @@
 
 #nav-bar {
   order: 1;
+  z-index: 5;
 
   & ~ * {
     flex-basis: 100vw;
@@ -105,7 +106,6 @@
     --phoenix-urlbar-expanded-inset: 16px;
 
     margin-top: calc(-1 * var(--phoenix-window-bar-height));
-    z-index: 5;
 
     #urlbar-container {
       width: var(--phoenix-urlbar-input-width) !important;
