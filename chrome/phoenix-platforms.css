@@ -57,10 +57,11 @@
      window controls can live in it; keep it as short as the menus instead and
      leave the window controls in the tab bar. */
   #toolbar-menubar {
+    flex-basis: 100vw;
+    order: 0;
+
     &:not([inactive]) {
-      flex-basis: 100vw;
       min-height: 0 !important;
-      order: 0;
       position: static !important;
 
       & > .titlebar-buttonbox-container {
