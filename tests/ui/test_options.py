@@ -130,3 +130,50 @@ def test_rounded_ui_clips_menupopups(driver, pref):
         == "clip"
     )
 
+
+def tab_background_pseudo(driver, pseudo, attribute=None):
+    """Computed style of the selected tab's background pseudo-element, optionally while the tab has `attribute`."""
+    return driver.execute_script(
+        """
+        const [pseudo, attribute] = arguments;
+        const tab = gBrowser.selectedTab;
+        const background = tab.querySelector(".tab-background");
+        if (attribute) tab.setAttribute(attribute, "true");
+        try {
+          const style = getComputedStyle(background, pseudo);
+          return {
+            animationName: style.animationName,
+            backgroundSize: style.backgroundSize,
+            display: style.display,
+            opacity: style.opacity,
+          };
+        } finally {
+          if (attribute) tab.removeAttribute(attribute);
+          // Flush, so the next call starts from the idle style instead of transitioning.
+          getComputedStyle(background, pseudo).opacity;
+        }
+        """,
+        pseudo,
+        attribute,
+    )
+
+
+def test_tab_loading_indicator_animates_busy_tab(driver, pref):
+    pref("phoenix.tabbar.use-tab-loading-indicator", True)
+    WebDriverWait(driver, 5).until(
+        lambda d: tab_background_pseudo(d, "::before", "busy")["animationName"]
+        == "tab-loading-indicator-animation"
+    )
+    # The selected tab keeps an idle line to transition from.
+    assert tab_background_pseudo(driver, "::before")["display"] == "flex"
+
+
+def test_tab_loading_progress_bar_bursts_after_load(driver, pref):
+    pref("phoenix.tabbar.use-tab-loading-progress-bar", True)
+    WebDriverWait(driver, 5).until(
+        lambda d: tab_background_pseudo(d, "::after", "busy")["opacity"] == "0.5"
+    )
+    # Firefox drops [busy] before it sets [bursting], so the burst must not depend on [busy].
+    burst = tab_background_pseudo(driver, "::after", "bursting")
+    assert burst["backgroundSize"] == "100% auto"
+    assert burst["opacity"] == "0"

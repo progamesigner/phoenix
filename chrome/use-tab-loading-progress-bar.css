@@ -50,24 +50,24 @@
       }
     }
 
-    &[bursting] {
-      & > .tab-stack {
-        & > .tab-background {
-          &::after {
-            background-size: 100%;
-            opacity: 0;
-            transition: background-size 80ms ease-out, opacity 80ms linear;
-          }
-        }
-      }
-    }
-
     &[progress] {
       & > .tab-stack {
         & > .tab-background {
           &::after {
             transition-duration: 2000ms;
           }
+        }
+      }
+    }
+  }
+
+  &[bursting] {
+    & > .tab-stack {
+      & > .tab-background {
+        &::after {
+          background-size: 100%;
+          opacity: 0;
+          transition: background-size 80ms ease-out, opacity 80ms linear;
         }
       }
     }
