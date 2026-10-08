@@ -1,8 +1,8 @@
 // Project-specific static checks that stylelint cannot express:
 //   1. every var(--phoenix-*) is declared somewhere in chrome/
 //   2. @import targets exist and every chrome/*.css is imported
-//   3. pref media queries that use both the legacy -moz-bool-pref form and
-//      the -moz-pref() form list the same prefs with the same negation
+//   3. pref media queries use -moz-pref(), never -moz-bool-pref, which
+//      Firefox 137 removed
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -52,21 +52,9 @@ for (const file of files) {
 }
 
 // 3. Pref media queries
-const prefQuery = /((?:not\s*)?)\(\s*-moz-bool-pref\s*:\s*"([^"]+)"\s*\)|((?:not\s*)?)\(\s*-moz-pref\(\s*"([^"]+)"\s*\)\s*\)/g;
 for (const [file, css] of sources) {
-  for (const m of css.matchAll(/@(?:media|import)\b([^;{]*)/g)) {
-    const legacy = [];
-    const modern = [];
-    for (const q of m[1].matchAll(prefQuery)) {
-      if (q[2] !== undefined) legacy.push(`${q[1] ? "not " : ""}${q[2]}`);
-      else modern.push(`${q[3] ? "not " : ""}${q[4]}`);
-    }
-    if (legacy.length === 0 || modern.length === 0) continue;
-    const a = [...legacy].sort().join(", ");
-    const b = [...modern].sort().join(", ");
-    if (a !== b) {
-      report(file, m.index, `-moz-bool-pref (${a}) and -moz-pref (${b}) disagree`);
-    }
+  for (const m of css.matchAll(/-moz-bool-pref\b/g)) {
+    report(file, m.index, "-moz-bool-pref no longer works; use -moz-pref()");
   }
 }
 

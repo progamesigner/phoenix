@@ -1,4 +1,4 @@
-@media (-moz-bool-pref: "sidebar.revamp"), (-moz-pref("sidebar.revamp")) {
+@media (-moz-pref("sidebar.revamp")) {
   /* Firefox 157+ draws the shadow on .browserContainer from this token */
   :root {
     --content-area-shadow: none !important;

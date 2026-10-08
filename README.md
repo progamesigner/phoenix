@@ -119,7 +119,7 @@ npm ci
 npm run lint:css
 ```
 
-Runs stylelint plus `scripts/check-css.mjs`, which checks that every `var(--phoenix-*)` is declared, every `@import` target exists and every file under `chrome/` is imported, and that `-moz-bool-pref` / `-moz-pref()` pairs agree.
+Runs stylelint plus `scripts/check-css.mjs`, which checks that every `var(--phoenix-*)` is declared, every `@import` target exists and every file under `chrome/` is imported, and that pref media queries use `-moz-pref()` rather than the removed `-moz-bool-pref`.
 
 ### CI
 
