@@ -86,11 +86,13 @@
     }
   }
 
-  #nav-bar {
-    &:not(:has(toolbaritem:first-child)),
-    &:not(:has(toolbarpaletteitem:first-child > toolbaritem)) {
-      margin-left: 2px;
-    }
+  /* Give the nav bar a gap unless its first item is a toolbaritem (wrapped in
+     a toolbarpaletteitem while customizing). */
+  #nav-bar:not(:has(
+    > #nav-bar-customization-target > toolbaritem:first-child,
+    > #nav-bar-customization-target > toolbarpaletteitem:first-child > toolbaritem
+  )) {
+    margin-left: 2px;
   }
 
   @media (max-width: 1000px) {
