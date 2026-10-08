@@ -62,7 +62,7 @@
     }
 
     :is(#TabsToolbar, #tabbrowser-tabs, #nav-bar, #urlbar-container :where(#urlbar, .urlbar-input-container)) {
-      transition: opacity var(--phoenix-transition-delay);
+      transition: opacity var(--phoenix-transition-short-speed);
     }
 
     :is(#urlbar, #urlbar-container) {

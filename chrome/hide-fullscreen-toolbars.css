@@ -13,7 +13,7 @@
           &:is([popover], [popover-open]) {
             pointer-events: none;
             opacity: 0;
-            transition: transform var(--phoenix-transition-delay) ease-in-out var(--phoenix-transition-speed), opacity 0ms calc(var(--phoenix-transition-delay) + var(--phoenix-transition-speed));
+            transition: transform var(--phoenix-transition-short-speed) ease-in-out var(--phoenix-transition-long-delay), opacity 0ms calc(var(--phoenix-transition-long-delay) + var(--phoenix-transition-short-speed));
             transform: translateY(calc(0px - var(--tab-min-height) - (var(--tab-margin-block, var(--tab-block-margin, 0px)) * 2) - var(--urlbar-container-height, var(--urlbar-height))));
           }
         }
@@ -24,7 +24,7 @@
         margin-top: 0 !important;
         position: fixed !important;
         transform: translateY(-100%);
-        transition: transform var(--phoenix-transition-delay) ease-in-out var(--phoenix-transition-speed) !important;
+        transition: transform var(--phoenix-transition-short-speed) ease-in-out var(--phoenix-transition-long-delay) !important;
         width: 100vw;
         z-index: 10 !important;
       }

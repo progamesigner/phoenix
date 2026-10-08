@@ -51,7 +51,9 @@
   --phoenix-statusbar-border-radius: 4px;
   --phoenix-statusbar-padding-inline: 8px;
   --phoenix-transition-delay: .15s;
+  --phoenix-transition-long-delay: .25s;
   --phoenix-transition-quick-speed: .05s;
+  --phoenix-transition-short-speed: .15s;
   --phoenix-transition-speed: .25s;
   --phoenix-urlbar-collapsed-width: 360px;
   --phoenix-urlbar-container-color-bar-height: 2px;
