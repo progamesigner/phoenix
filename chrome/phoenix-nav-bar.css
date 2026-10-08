@@ -24,7 +24,7 @@
 }
 
 #urlbar-container {
-  min-width: calc(min(var(--phoenix-urlbar-collapsed-width), calc(100vw - var(--phoenix-single-tab-width))));
+  min-width: min(var(--phoenix-urlbar-collapsed-width), calc(100vw - var(--phoenix-single-tab-width)));
   position: static !important;
   transition: background-color var(--phoenix-transition-speed), width var(--phoenix-transition-speed), min-width var(--phoenix-transition-speed);
   width: unset !important;
