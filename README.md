@@ -68,16 +68,16 @@ cp userChrome.example.css userChrome.css
 - `phoenix.browser.always-show-fullscreen-toolbars`
 - `phoenix.navbar.always-show-navigation-buttons`
 - `phoenix.navbar.always-show-navigator-border`
-- `phoenix.navbar.hide-unified-extensions-button`
 - `phoenix.navbar.hide-window-dragging-area`
-- `phoenix.tabbar.always-show-all-tabs-button`
 - `phoenix.tabbar.always-show-tabs`
+- `phoenix.urlbar.always-show-addon-icons` (only has an effect while `phoenix.urlbar.always-show-icons` is off or `phoenix.urlbar.use-dynamic-urlbar-icons` is on; replaces the deprecated `phoenix.navs.always-show-urlbar-icons.always-show-addon-icons`, which still works)
 - `phoenix.urlbar.always-show-icons`
 - `phoenix.urlbar.hide-leftmost-menu-button`
 
 #### Enable Extra & Alternative Stylings
 - `phoenix.browser.use-acrylic-window` (only available on macOS)
 - `phoenix.browser.use-rounded-ui` (no effect with the Nova UI, which is already rounded)
+- `phoenix.navbar.hide-unified-extensions-button`
 - `phoenix.navbar.use-alternative-navigation-buttons`
 - `phoenix.navbar.use-conditional-navigation-buttons`
 - `phoenix.navbar.use-fade-window-on-inactive`
@@ -95,20 +95,27 @@ cp userChrome.example.css userChrome.css
 
 ## Compatibility
 
-Currently tested on Windows & macOS with Firefox 137+
+Phoenix targets Windows & macOS and supports the newest Firefox ESR (currently 153) and the current Firefox release (currently 157). The automated tests run on Linux; see [Development](#development).
 
 ## Development
 
 ### UI Smoke Tests
 
-`tests/ui` loads the theme into a pinned Firefox (Linux x86_64) and checks the URL bar and tab strip widths at 699, 701, 1000 and 1001px, plus that the menu opens after hovering the collapsed toolbar at narrow widths.
+`tests/ui` loads the theme into a pinned Firefox (Linux x86_64) and checks:
+
+- the responsive layout: URL bar and tab strip widths at 699, 701, 1000 and 1001px, that the menu opens after hovering the collapsed toolbar at narrow widths, and that the focused URL bar stays centered;
+- the nav bar staying on screen with vertical tabs, on both sides of the breakpoint;
+- the find bar text box fitting its container;
+- the fullscreen toolbars sliding out and getting an opaque background when shown;
+- the content area having no card shadow;
+- options: `phoenix.browser.use-rounded-ui` (and that it leaves the Nova UI alone) and `phoenix.urlbar.always-show-addon-icons` (including its deprecated name).
 
 ```sh
 pip install -r tests/ui/requirements.txt
 tests/ui/run.sh
 ```
 
-`run.sh` downloads Firefox and geckodriver into `.cache/` on first run and uses `xvfb-run` when no display is available. Set `FIREFOX_BINARY` / `GECKODRIVER` to use your own builds.
+`run.sh` downloads Firefox and geckodriver into `.cache/` on first run (versions pinned in `tests/ui/install-firefox.sh`) and uses `xvfb-run` when no display is available. Set `FIREFOX_VERSION` to test another Firefox build from the Mozilla archive (e.g. `FIREFOX_VERSION=153.4.0esr`), `GECKODRIVER_VERSION` to change geckodriver, `FIREFOX_CACHE_DIR` to move the download cache, or `FIREFOX_BINARY` / `GECKODRIVER` to use your own builds. `UI_NOVA=true` / `UI_NOVA=false` forces `browser.nova.enabled`; unset keeps the browser default.
 
 On failure, full-window screenshots and `geckodriver.log` are written to `.artifacts/ui/` (override with `UI_ARTIFACTS_DIR`).
 
@@ -123,4 +130,7 @@ Runs stylelint plus `scripts/check-css.mjs`, which checks that every `var(--phoe
 
 ### CI
 
-`.github/workflows/ci.yml` runs both on pushes to `main` and on pull requests, against the Firefox and geckodriver versions pinned in the workflow. When the UI smoke tests fail, the screenshots, `pytest.log`, `junit.xml` and `geckodriver.log` are uploaded as the `ui-smoke-failure` artifact.
+`.github/workflows/checks.yaml` runs on pushes to `main`, on pull requests and on manual dispatch, on Ubuntu:
+
+- `css-lint` runs the CSS lint above.
+- `ui-smoke` installs the Firefox and geckodriver versions pinned in the workflow, runs `scripts/check-firefox-vars.mjs` against that Firefox (checks that the Firefox CSS variables the theme reads or overrides still exist there), then the UI smoke tests, once with the Nova UI on and once with it off. When it fails, the screenshots, `pytest.log`, `junit.xml` and `geckodriver.log` are uploaded as the `ui-smoke-failure-nova-<true|false>` artifact.
