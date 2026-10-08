@@ -46,14 +46,6 @@ menupopup {
   overflow: clip !important;
 }
 
-.tabbrowser-tab {
-  &:is([selected], [beforeselected-visible]) {
-    &::after{
-      border-color: transparent !important;
-    }
-  }
-}
-
 .urlbar-icon,
 toolbar toolbarbutton:not(#back-button):not(.bookmark-item):not(.titlebar-button) > .toolbarbutton-icon {
   border-radius: 0 !important;
