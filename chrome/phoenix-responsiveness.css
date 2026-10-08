@@ -2,7 +2,7 @@
   --phoenix-single-tab-width: 800px;
 
   &:has(#toolbar-menubar:not([inactive])),
-  &:not([tabsintitlebar]),
+  &:not([customtitlebar]),
   &[inFullscreen],
   &[sizemode="maximized"] {
     --phoenix-window-dragging-area-height: 0px !important;
