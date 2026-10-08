@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    env:
+      ARCHIVE: phoenix_${{ github.ref_name }}.zip
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      # Same layout as earlier releases: the theme files at the top level, ready to be
+      # copied into <profile>/chrome. .gitattributes export-ignore drops dev files.
+      - name: Build archive
+        run: |
+          git archive --format=zip -o "$ARCHIVE" HEAD
+          unzip -l "$ARCHIVE"
+          unzip -l "$ARCHIVE" chrome/phoenix.css userChrome.example.css > /dev/null
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "$ARCHIVE" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "$ARCHIVE" --verify-tag --title "$GITHUB_REF_NAME" --generate-notes
+          fi
