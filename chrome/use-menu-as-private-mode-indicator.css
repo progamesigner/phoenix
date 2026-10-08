@@ -13,9 +13,7 @@
   }
 }
 
-#private-browsing-indicator-with-label,
 .private-browsing-indicator-with-label,
-.private-browsing-indicator-button,
-.private-browsing-indicator {
+.private-browsing-indicator-button {
   display: none;
 }
