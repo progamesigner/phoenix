@@ -115,3 +115,18 @@ def test_transparent_urlbar(driver, pref):
     ActionChains(driver).move_to_element(driver.find_element(By.ID, "urlbar")).perform()
     wait.until(lambda d: urlbar_background(d) != TRANSPARENT)
     ActionChains(driver).move_to_element(content).perform()
+
+
+def test_rounded_ui_clips_menupopups(driver, pref):
+    nova = driver.execute_script("return Services.prefs.getBoolPref('browser.nova.enabled', false)")
+    if nova:
+        pytest.skip("use-rounded-ui is not loaded with the Nova UI")
+
+    pref("phoenix.browser.use-rounded-ui", True)
+    WebDriverWait(driver, 5).until(
+        lambda d: d.execute_script(
+            "return getComputedStyle(document.getElementById('tabContextMenu')).overflow"
+        )
+        == "clip"
+    )
+

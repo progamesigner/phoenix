@@ -43,7 +43,7 @@ button,
 
 menupopup {
   appearance: none !important;
-  overflow: -moz-hidden-unscrollable !important;
+  overflow: clip !important;
 }
 
 .tabbrowser-tab {
