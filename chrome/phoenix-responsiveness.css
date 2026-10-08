@@ -61,7 +61,7 @@
       min-width: 100vw !important;
     }
 
-    :is(#TabsToolbar, #tabbrowser-tabs, #nav-bar, #urlbar-container:where(#urlbar, .urlbar-input-container)) {
+    :is(#TabsToolbar, #tabbrowser-tabs, #nav-bar, #urlbar-container :where(#urlbar, .urlbar-input-container)) {
       transition: opacity var(--phoenix-transition-delay);
     }
 

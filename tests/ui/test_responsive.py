@@ -189,6 +189,30 @@ def test_narrow_menu_opens_after_hover(two_tabs, width):
         )
 
 
+@pytest.mark.parametrize("width", NARROW_WIDTHS)
+def test_narrow_urlbar_fades(two_tabs, width):
+    driver = two_tabs
+    resize(driver, width)
+    rest_pointer(driver)
+    wait = WebDriverWait(driver, 5, poll_frequency=0.1)
+    fading = """
+        return [gURLBar, gURLBar.querySelector('.urlbar-input-container')].map(el => {
+          const cs = getComputedStyle(el);
+          const props = cs.transitionProperty.split(', ');
+          const durations = cs.transitionDuration.split(', ');
+          const i = props.indexOf('opacity');
+          return [i >= 0 && parseFloat(durations[i % durations.length]) > 0, cs.opacity];
+        });
+    """
+
+    # The address bar fades along with the nav bar rather than popping in and out.
+    wait.until(lambda d: d.execute_script(fading) == [[True, "0"], [True, "0"]])
+    ActionChains(driver).move_to_element(driver.find_element(By.ID, "TabsToolbar")).perform()
+    wait.until(lambda d: d.execute_script(fading) == [[True, "1"], [True, "1"]])
+    rest_pointer(driver)
+    wait.until(lambda d: d.execute_script(fading) == [[True, "0"], [True, "0"]])
+
+
 @pytest.mark.parametrize("width", [800, 1400])
 def test_focused_urlbar_is_centered(driver, width):
     resize(driver, width)
