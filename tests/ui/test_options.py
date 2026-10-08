@@ -5,6 +5,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
+from test_responsive import rest_pointer
+
 TRANSPARENT = "rgba(0, 0, 0, 0)"
 
 
@@ -177,3 +179,53 @@ def test_tab_loading_progress_bar_bursts_after_load(driver, pref):
     burst = tab_background_pseudo(driver, "::after", "bursting")
     assert burst["backgroundSize"] == "100% auto"
     assert burst["opacity"] == "0"
+
+
+@pytest.fixture
+def addon_page_action(driver):
+    # Installing a real extension page action needs a temporary add-on and a
+    # page it matches; a stand-in with the same classes exercises the same rules.
+    driver.execute_script(
+        """
+        const principal = Services.scriptSecurityManager.getSystemPrincipal();
+        gBrowser.selectedTab = gBrowser.addTab("about:robots", { triggeringPrincipal: principal });
+        const action = document.createXULElement("hbox");
+        action.id = "phoenix-test-addon-page-action";
+        action.className = "urlbar-page-action urlbar-addon-page-action";
+        document.getElementById("page-action-buttons").append(action);
+        """
+    )
+    WebDriverWait(driver, 5).until(
+        lambda d: d.execute_script("return gURLBar.getAttribute('pageproxystate') == 'valid'")
+    )
+    rest_pointer(driver)
+    yield driver
+    driver.execute_script(
+        """
+        document.getElementById("phoenix-test-addon-page-action").remove();
+        gBrowser.removeTab(gBrowser.selectedTab);
+        """
+    )
+
+
+def addon_icon_opacity(driver):
+    return driver.execute_script(
+        "return getComputedStyle(document.getElementById('phoenix-test-addon-page-action')).opacity"
+    )
+
+
+@pytest.mark.parametrize(
+    "name",
+    [
+        "phoenix.urlbar.always-show-addon-icons",
+        # Deprecated name, still honored.
+        "phoenix.navs.always-show-urlbar-icons.always-show-addon-icons",
+    ],
+)
+def test_always_show_addon_icons(addon_page_action, pref, name):
+    driver = addon_page_action
+    wait = WebDriverWait(driver, 5, poll_frequency=0.1)
+    wait.until(lambda d: addon_icon_opacity(d) == "0")
+
+    pref(name, True)
+    wait.until(lambda d: addon_icon_opacity(d) == "1")

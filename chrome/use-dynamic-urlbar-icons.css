@@ -44,7 +44,8 @@
   }
 }
 
-@media not (-moz-pref("phoenix.navs.always-show-urlbar-icons.always-show-addon-icons")) {
+/* phoenix.navs.always-show-urlbar-icons.always-show-addon-icons is the deprecated old name; keep honoring it. */
+@media (not (-moz-pref("phoenix.urlbar.always-show-addon-icons"))) and (not (-moz-pref("phoenix.navs.always-show-urlbar-icons.always-show-addon-icons"))) {
   #urlbar-container {
     &:not(:hover) {
       #urlbar {
