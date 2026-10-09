@@ -3,11 +3,14 @@
 }
 
 #urlbar {
-  --urlbar-background-color: transparent;
-
   &:hover {
     --toolbar-field-background-color: var(--toolbar-background-color);
-    --urlbar-background-color: var(--toolbar-background-color);
+  }
+
+  /* Newer Firefox (157) resolves the urlbar background color on :root, out of
+     reach of the overrides above; paint it from the field color like 153 ESR. */
+  &:not([focused], [open]) > :is(#urlbar-background, .urlbar-background) {
+    background-color: var(--toolbar-field-background-color) !important;
   }
 }
 

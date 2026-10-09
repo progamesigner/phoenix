@@ -220,7 +220,7 @@ def test_focused_urlbar_is_centered(driver, width):
         'gURLBar.focus(); gURLBar.value = "example"; gURLBar.startQuery()'
     )
     WebDriverWait(driver, 5).until(
-        lambda d: d.execute_script("return gURLBar.hasAttribute('popover-open')")
+        lambda d: d.execute_script("return gURLBar.view.isOpen")
     )
     urlbar = driver.execute_script(
         "const r = gURLBar.getBoundingClientRect(); return {left: r.left, width: r.width}"

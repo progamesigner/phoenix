@@ -1,7 +1,11 @@
 """Smoke tests for optional stylings toggled through phoenix.* prefs."""
 
 import pytest
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+
+TRANSPARENT = "rgba(0, 0, 0, 0)"
 
 
 @pytest.fixture
@@ -88,3 +92,26 @@ def test_window_dragging_area(driver, custom_titlebar, pref):
     WebDriverWait(driver, 5).until(
         lambda d: dragging_area(d) == {"height": "0px", "navBarMargin": "0px"}
     )
+
+
+def urlbar_background(driver):
+    return driver.execute_script(
+        "return getComputedStyle(gURLBar.querySelector(':is(#urlbar-background, .urlbar-background)')).backgroundColor"
+    )
+
+
+def test_transparent_urlbar(driver, pref):
+    # Idle: pointer over web content, focus out of the address bar.
+    content = driver.find_element(By.ID, "tabbrowser-tabpanels")
+    ActionChains(driver).move_to_element(content).perform()
+    driver.execute_script("gBrowser.selectedBrowser.focus()")
+    wait = WebDriverWait(driver, 5, poll_frequency=0.1)
+    wait.until(lambda d: urlbar_background(d) != TRANSPARENT)
+
+    pref("phoenix.urlbar.use-transparent-urlbar", True)
+    wait.until(lambda d: urlbar_background(d) == TRANSPARENT)
+
+    # Hovering brings the field background back.
+    ActionChains(driver).move_to_element(driver.find_element(By.ID, "urlbar")).perform()
+    wait.until(lambda d: urlbar_background(d) != TRANSPARENT)
+    ActionChains(driver).move_to_element(content).perform()
