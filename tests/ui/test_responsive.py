@@ -16,7 +16,10 @@ NARROW_WIDTHS = [w for w in WIDTHS if w <= BREAKPOINT]
 WINDOW_HEIGHT = 700
 TOLERANCE = 1
 
-RECT_IDS = ["nav-bar", "urlbar-container", "urlbar", "TabsToolbar", "tabbrowser-tabs"]
+RECT_IDS = [
+    "nav-bar", "urlbar-container", "urlbar", "TabsToolbar",
+    "TabsToolbar-customization-target", "tabbrowser-tabs",
+]
 
 
 def resize(driver, width):
@@ -152,8 +155,11 @@ def test_urlbar_and_tabs_width(two_tabs, width):
             else:
                 assert tab["display"] == "none"
     else:
-        # Nav bar and tab strip sit side by side, tab strip flush right.
-        assert nav["top"] == pytest.approx(tabs_toolbar["top"], abs=TOLERANCE)
+        # Nav bar and tab content align below the window dragging area, which
+        # sits inside the tab toolbar and above the nav bar.
+        assert nav["top"] == pytest.approx(
+            s["TabsToolbar-customization-target"]["top"], abs=TOLERANCE
+        )
         assert nav["right"] <= tabs_toolbar["left"] + TOLERANCE
         assert tabs_toolbar["right"] == pytest.approx(width, abs=TOLERANCE)
 
