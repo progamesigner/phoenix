@@ -95,20 +95,23 @@ cp userChrome.example.css userChrome.css
 
 ## Compatibility
 
-Phoenix targets Windows & macOS and supports the newest Firefox ESR (currently 153) and the current Firefox release (currently 157). The automated tests run on Linux; see [Development](#development).
+Phoenix targets Windows & macOS and supports the newest Firefox ESR (currently 153) and the current Firefox release (currently 157). The automated tests run on Linux and Windows against both; see [Development](#development).
 
 ## Development
 
 ### UI Smoke Tests
 
-`tests/ui` loads the theme into a pinned Firefox (Linux x86_64) and checks:
+`tests/ui` loads the theme into a pinned Firefox (Linux x86_64 or Windows; macOS installs are supported by the scripts but untested) and checks:
 
-- the responsive layout: URL bar and tab strip widths at 699, 701, 1000 and 1001px, that the menu opens after hovering the collapsed toolbar at narrow widths, and that the focused URL bar stays centered;
+- the responsive layout: URL bar and tab strip widths at 699, 701, 1000 and 1001px, that the menu opens after hovering the collapsed toolbar at narrow widths, that the focused URL bar stays centered, that the URL bar fades with the nav bar in narrow windows, and that the Windows window controls stay uncovered;
 - the nav bar staying on screen with vertical tabs, on both sides of the breakpoint;
 - the find bar text box fitting its container;
 - the fullscreen toolbars sliding out and getting an opaque background when shown;
 - the content area having no card shadow;
-- options: `phoenix.browser.use-rounded-ui` (and that it leaves the Nova UI alone) and `phoenix.urlbar.always-show-addon-icons` (including its deprecated name).
+- the window dragging area above the toolbars, and the Windows nav bar gap rule;
+- options: `phoenix.browser.use-rounded-ui` (and that it leaves the Nova UI alone) including menu clipping, `phoenix.urlbar.always-show-addon-icons` (including its deprecated name), `phoenix.navbar.hide-window-dragging-area` and the tab loading indicator and progress bar.
+
+On Linux, Firefox needs GTK 3 and ALSA (`libgtk-3-0t64`, `libasound2t64`), and `xvfb` when there is no display.
 
 ```sh
 pip install -r tests/ui/requirements.txt
@@ -130,7 +133,9 @@ Runs stylelint plus `scripts/check-css.mjs`, which checks that every `var(--phoe
 
 ### CI
 
-`.github/workflows/checks.yaml` runs on pushes to `main`, on pull requests and on manual dispatch, on Ubuntu:
+`.github/workflows/checks.yaml` runs on pushes to `main`, on pull requests and on manual dispatch:
 
 - `css-lint` runs the CSS lint above.
-- `ui-smoke` installs the Firefox and geckodriver versions pinned in the workflow, runs `scripts/check-firefox-vars.mjs` against that Firefox (checks that the Firefox CSS variables the theme reads or overrides still exist there), then the UI smoke tests, once with the Nova UI on and once with it off. When it fails, the screenshots, `pytest.log`, `junit.xml` and `geckodriver.log` are uploaded as the `ui-smoke-failure-nova-<true|false>` artifact.
+- `ui-smoke` runs on Linux and Windows against the newest Firefox release (with the Nova UI on and off) and the newest ESR, using the versions pinned in the workflow; the Windows runs cover the `-moz-platform: windows` rules. On Linux it also runs `scripts/check-firefox-vars.mjs` against each Firefox (checks that the Firefox CSS variables the theme reads or overrides still exist there). When it fails, the screenshots, `pytest.log`, `junit.xml` and `geckodriver.log` are uploaded as a `ui-smoke-failure-<Linux|Windows>-<Firefox version>[-nova-<true|false>]` artifact.
+
+`.github/workflows/release.yaml` runs when a `v*` tag is pushed: it builds `phoenix_<tag>.zip` with `git archive` (files marked `export-ignore` in `.gitattributes` are left out) and attaches it to a new GitHub release.

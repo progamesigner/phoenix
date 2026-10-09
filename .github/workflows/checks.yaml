@@ -22,17 +22,30 @@ jobs:
       - run: npm run lint:css
 
   ui-smoke:
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        # Nova is the default UI from Firefox 157; the classic UI stays reachable via
-        # browser.nova.enabled=false, so keep both covered until that pref goes away.
-        nova: [true, false]
-    name: ui-smoke (nova=${{ matrix.nova }})
+        # Newest release and newest ESR. Nova is the default UI from Firefox 157; the
+        # classic UI stays reachable via browser.nova.enabled=false, so cover both there.
+        # 153 ESR only ships Nova as an unfinished preview behind the same pref (off by
+        # default), so it runs once with UI_NOVA empty, i.e. the browser default.
+        # Windows exercises the -moz-platform: windows rules in phoenix-platforms.css.
+        os: [ubuntu-24.04, windows-latest]
+        firefox: [157.0.1]
+        nova: ["true", "false"]
+        include:
+          - os: ubuntu-24.04
+            firefox: 153.4.0esr
+          - os: windows-latest
+            firefox: 153.4.0esr
+    name: ui-smoke (${{ matrix.os }}, ${{ matrix.firefox }}${{ matrix.nova && format(', nova={0}', matrix.nova) || '' }})
+    defaults:
+      run:
+        shell: bash
     env:
-      # Pinned here; tests/ui/install-firefox.sh uses the same defaults locally.
-      FIREFOX_VERSION: "157.0"
+      # Pinned here; tests/ui/install-firefox.sh defaults to the release locally.
+      FIREFOX_VERSION: ${{ matrix.firefox }}
       GECKODRIVER_VERSION: 0.37.1
       UI_ARTIFACTS_DIR: ${{ github.workspace }}/.artifacts/ui
       UI_NOVA: ${{ matrix.nova }}
@@ -43,18 +56,28 @@ jobs:
           python-version: "3.13"
           cache: pip
           cache-dependency-path: tests/ui/requirements.txt
-      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends xvfb
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends xvfb
+      - if: runner.os == 'Windows'
+        name: Raise the screen resolution
+        # The runner desktop is 1024x768, too small for the 1001px and 1400px windows
+        # the tests open; tests skip widths that still do not fit.
+        continue-on-error: true
+        shell: pwsh
+        run: Set-DisplayResolution -Width 1920 -Height 1080 -Force
       - run: pip install -r tests/ui/requirements.txt
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: .cache
-          key: firefox-${{ env.FIREFOX_VERSION }}-geckodriver-${{ env.GECKODRIVER_VERSION }}
+          key: firefox-${{ runner.os }}-${{ env.FIREFOX_VERSION }}-geckodriver-${{ env.GECKODRIVER_VERSION }}
       - name: Install Firefox
         run: |
           dest="$(tests/ui/install-firefox.sh)"
-          "$dest/firefox/firefox" --version
+          grep -E '^(Name|Version|BuildID)=' "$dest/firefox/application.ini"
           "$dest/geckodriver" --version | head -n 1
       - name: Check Firefox CSS variables
+        # Firefox's CSS is the same on every platform apart from platform rules.
+        if: runner.os == 'Linux'
         run: node scripts/check-firefox-vars.mjs "$(tests/ui/install-firefox.sh)/firefox"
       - name: Run UI smoke tests
         run: |
@@ -65,6 +88,6 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: ui-smoke-failure-nova-${{ matrix.nova }}
+          name: ui-smoke-failure-${{ runner.os }}-${{ matrix.firefox }}${{ matrix.nova && format('-nova-{0}', matrix.nova) || '' }}
           path: .artifacts/ui
           if-no-files-found: ignore
