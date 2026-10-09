@@ -21,6 +21,12 @@ RECT_IDS = ["nav-bar", "urlbar-container", "urlbar", "TabsToolbar", "tabbrowser-
 
 def resize(driver, width):
     """Resize so the chrome document (what the media queries see) is `width` wide."""
+    frame, screen = driver.execute_script(
+        "return [window.outerWidth - window.innerWidth, screen.availWidth]"
+    )
+    if width + frame > screen:
+        # Windows clamps windows to the screen (the CI runner desktop may be 1024px).
+        pytest.skip(f"a {width}px window does not fit the {screen}px screen")
     driver.execute_script(
         "window.resizeTo(arguments[0] + window.outerWidth - window.innerWidth, arguments[1])",
         width,
@@ -28,6 +34,18 @@ def resize(driver, width):
     )
     WebDriverWait(driver, 5).until(
         lambda d: d.execute_script("return window.innerWidth") == width
+    )
+
+
+def reserved_width(driver):
+    """Width the narrow nav bar leaves free at the right for the window controls."""
+    return driver.execute_script(
+        """
+        const s = getComputedStyle(document.documentElement);
+        const controls = parseFloat(s.getPropertyValue('--phoenix-window-control-margin'));
+        if (!controls || !matchMedia('(-moz-platform: windows)').matches) return 0;
+        return controls + parseFloat(s.getPropertyValue('--phoenix-window-dragging-area-width'));
+        """
     )
 
 
@@ -116,8 +134,9 @@ def test_urlbar_and_tabs_width(two_tabs, width):
     assert tabs_toolbar["right"] <= width + TOLERANCE
 
     if narrow:
-        # Both bars span the window and are stacked on the same row.
-        assert nav["width"] == pytest.approx(width, abs=TOLERANCE)
+        # Both bars span the window and are stacked on the same row. On Windows the
+        # nav bar stops short of the window controls (phoenix-platforms.css).
+        assert nav["width"] == pytest.approx(width - reserved_width(driver), abs=TOLERANCE)
         assert tabs_toolbar["width"] == pytest.approx(width, abs=TOLERANCE)
         assert nav["top"] == pytest.approx(tabs_toolbar["top"], abs=TOLERANCE)
 
@@ -187,6 +206,34 @@ def test_narrow_menu_opens_after_hover(two_tabs, width):
             )
             == "closed"
         )
+
+
+@pytest.mark.parametrize("width", NARROW_WIDTHS)
+def test_narrow_nav_bar_leaves_window_controls_uncovered(two_tabs, width):
+    driver = two_tabs
+    resize(driver, width)
+    rest_pointer(driver)
+    buttons = driver.execute_script(
+        "return [...document.querySelectorAll('#TabsToolbar .titlebar-button')]"
+        ".filter(b => b.getBoundingClientRect().width > 0)"
+    )
+    if not buttons:
+        # Linux under Xvfb keeps the system title bar, so Firefox draws no controls.
+        pytest.skip("Firefox draws no window controls of its own here")
+
+    # Bring the nav bar in over the tab row, where the window controls also live.
+    ActionChains(driver).move_to_element(driver.find_element(By.ID, "TabsToolbar")).perform()
+    WebDriverWait(driver, 5, poll_frequency=0.1).until(lambda d: opacity(d, "nav-bar") == "1")
+    for button in buttons:
+        hit = driver.execute_script(
+            """
+            const r = arguments[0].getBoundingClientRect();
+            const el = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+            return el && (el === arguments[0] || arguments[0].contains(el));
+            """,
+            button,
+        )
+        assert hit, f"{button.get_attribute('class')} is covered by another element"
 
 
 @pytest.mark.parametrize("width", NARROW_WIDTHS)
